@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>C C++ 打印三角形 - Ich-liebe-dich</title>
+
+
+    <meta name="description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/86700593  打印三角形是C语言的经典例题，首先我们先看看效果图。 一、直角三角形ok，现在从最简单的打印直角三角形开始。通过以上效果图你会发现规律：    行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C C++ 打印三角形">
+<meta property="og:url" content="http://yoursite.com/2019/01/30/C C++ 打印三角形/index.html">
+<meta property="og:site_name" content="Ich-liebe-dich">
+<meta property="og:description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/86700593  打印三角形是C语言的经典例题，首先我们先看看效果图。 一、直角三角形ok，现在从最简单的打印直角三角形开始。通过以上效果图你会发现规律：    行">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-10T13:29:33.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C C++ 打印三角形">
+<meta name="twitter:description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/86700593  打印三角形是C语言的经典例题，首先我们先看看效果图。 一、直角三角形ok，现在从最简单的打印直角三角形开始。通过以上效果图你会发现规律：    行">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/live2d-widget/autoload.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="C C++ 打印三角形" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-30T03:25:01.000Z">2019-01-30</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/b-Review/">b'Review'</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 593 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                C C++ 打印三角形
+            
+        </h1>
+        <div class="content">
+            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/86700593" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/86700593
+</a></p>
+<p>打印三角形是C语言的经典例题，首先我们先看看效果图。<br><img src="https://img-blog.csdnimg.cn/20190130103046293.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190130103114643.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190130103140267.png" alt="在这里插入图片描述"></p>
+<h2 id="一、直角三角形"><a href="#一、直角三角形" class="headerlink" title="一、直角三角形"></a>一、直角三角形</h2><p>ok，现在从最简单的打印直角三角形开始。<br>通过以上效果图你会发现规律：</p>
+<table>
+<thead>
+<tr>
+<th>行数</th>
+<th>* 的个数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>n</td>
+<td>n</td>
+</tr>
+</tbody></table>
+<p>根据以上规律写出以下代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    int i, j;
+    int LINE;
+    scanf(&quot;%d&quot;, &amp;LINE);
+
+    for (i = 1; i &lt;= LINE; i++)//直角三角形
+    {
+        for (j = 0; j &lt; i; j++)
+        { 
+            printf(&quot;*&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre><p><strong>在代码中 i 对应的循环控制（外层循环）着行数，j 对应的循环（内层循环）控制着每一行中*的个数。</strong></p>
+<h2 id="二、等边三角形"><a href="#二、等边三角形" class="headerlink" title="二、等边三角形"></a>二、等边三角形</h2><p>同样地，等边三角形也有规律。</p>
+<table>
+<thead>
+<tr>
+<th>行数</th>
+<th>空格的个数</th>
+<th>* 的个数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>n</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>n-1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>n-2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>n-3</td>
+<td>7</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>n</td>
+<td>1</td>
+<td>2n+1</td>
+</tr>
+</tbody></table>
+<p>根据规律写出代码</p>
+<pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    int i, j;
+    int LINE;
+    scanf(&quot;%d&quot;, &amp;LINE);
+
+    for (i = 0; i &lt; LINE; i++)//等边三角形
+    {
+        for (j = 0; j &lt; (LINE - i); j++)
+        {
+            printf(&quot; &quot;);
+        }
+
+        for (j = 0; j &lt; 2 * i + 1; j++)
+        {
+            printf(&quot;*&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre><h2 id="三、菱形"><a href="#三、菱形" class="headerlink" title="三、菱形"></a>三、菱形</h2><p>学会了等边三角形的打印，菱形自然也不难。菱形是由两个等腰三角形组成的。</p>
+<pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    int i, j;
+    int LINE;
+    scanf(&quot;%d&quot;, &amp;LINE);
+
+    for (i = LINE - 2; i &gt;= 0; i--)
+    {
+        for (j = 0; j &lt; (LINE - i); j++)
+        {
+            printf(&quot; &quot;);
+        }
+        for (j = 0; j &lt; 2 * i + 1; j++)
+        {
+            printf(&quot;*&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre><h2 id="四、杨辉三角"><a href="#四、杨辉三角" class="headerlink" title="四、杨辉三角"></a>四、杨辉三角</h2><p><img src="https://img-blog.csdnimg.cn/20190130112153356.png" alt="在这里插入图片描述"><br>规律：</p>
+<ol>
+<li>每行最左边和最右边都是1 </li>
+<li>从第二行起，中间的每一个数是上一行里相邻两个数之和 </li>
+<li>第n行有n个数字 </li>
+</ol>
+<p>我们用二维数组表示杨辉三角中的数字，结合规律得到以下代码</p>
+<pre><code>#include &lt;stdio.h&gt;
+#define MAX 10
+int main()
+{
+    int i, j;
+    int LINE;
+    int array[MAX][MAX] = { 0 };
+    scanf(&quot;%d&quot;, &amp;LINE);
+    //cin &gt;&gt; LINE;
+
+    for (i = 0; i &lt; LINE; i++)
+    {
+        array[i][0] = 1;
+        printf(&quot;%d &quot;, array[i][0]);
+        //cout &lt;&lt; array[i][0] &lt;&lt; &quot; &quot;;
+        for (j = 1; j &lt;= i; j++)
+        {
+            array[i][j] = array[i-1][j] + array[i-1][j - 1];
+            printf(&quot;%d &quot;, array[i][j]);
+            //cout&lt;&lt;array[i][j]&lt;&lt;&quot; &quot;;
+        }
+        printf(&quot;\n&quot;);
+        //cout &lt;&lt; endl;
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/01/用C++类做的奇怪的日历/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">用C++类做的奇怪的日历</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/29/Java Student类/">
+                <span class="level-item">Java Student类</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img  src="/images/avatar.png" alt="Ich-liebe-dich">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Ich-liebe-dich
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>xxx</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        99
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        43
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/b-2048/">
+            <span class="level-start">
+                <span class="level-item">b'2048'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-2048/b-2048-Easyx/">
+            <span class="level-start">
+                <span class="level-item">b'2048 Easyx'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">b'Algorithm'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-C/">
+            <span class="level-start">
+                <span class="level-item">b'C++'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-C/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'C++\xe5\x87\xbd\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/">
+            <span class="level-start">
+                <span class="level-item">b'Java EE'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/b-Spring/">
+            <span class="level-start">
+                <span class="level-item">b'Spring'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/b-problems/">
+            <span class="level-start">
+                <span class="level-item">b'problems'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Java/">
+            <span class="level-start">
+                <span class="level-item">b'Java'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Java/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-JavaScript/">
+            <span class="level-start">
+                <span class="level-item">b'JavaScript'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+            <span class="level-start">
+                <span class="level-item">b'Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+            <span class="level-start">
+                <span class="level-item">b'Java\xe6\x95\xb0\xe7\xbb\x84'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Leetcode/">
+            <span class="level-start">
+                <span class="level-item">b'Leetcode'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+            <span class="level-start">
+                <span class="level-item">b'Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-MySQL/">
+            <span class="level-start">
+                <span class="level-item">b'MySQL'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Review/">
+            <span class="level-start">
+                <span class="level-item">b'Review'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Strange/b-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">b'Algorithm'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+            <span class="level-start">
+                <span class="level-item">b'Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+            <span class="level-start">
+                <span class="level-item">b'Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+            <span class="level-start">
+                <span class="level-item">b'\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xae-x8c-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\xae\x8c\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xae-x8c-xe6-x95-xb0/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x89\x8b\xe5\x86\x99LinkedList'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x89-x8b-xe5-x86-x99LinkedList/b-Java/">
+            <span class="level-start">
+                <span class="level-item">b'Java'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+            <span class="level-start">
+                <span class="level-item">b'css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-java-xe5-x8c-x85/">
+            <span class="level-start">
+                <span class="level-item">b'java\xe5\x8c\x85'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-oj-selftrain/">
+            <span class="level-start">
+                <span class="level-item">b'oj - selftrain'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-poj-1003/">
+            <span class="level-start">
+                <span class="level-item">b'poj 1003'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-poj-1005/">
+            <span class="level-start">
+                <span class="level-item">b'poj 1005'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-problems/">
+            <span class="level-start">
+                <span class="level-item">b'problems'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/b-2048-Easyx/" style="font-size: 10px;">b'2048 Easyx'</a> <a href="/tags/b-2048/" style="font-size: 10px;">b'2048'</a> <a href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/" style="font-size: 10px;">b'C++\xe5\x87\xbd\xe6\x95\xb0'</a> <a href="/tags/b-Java/" style="font-size: 10px;">b'Java'</a> <a href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/" style="font-size: 10px;">b'Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2'</a> <a href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/" style="font-size: 10px;">b'Java\xe6\x95\xb0\xe7\xbb\x84'</a> <a href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/" style="font-size: 10px;">b'Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82'</a> <a href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/" style="font-size: 10px;">b'Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93'</a> <a href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/" style="font-size: 10px;">b'Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf'</a> <a href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/" style="font-size: 10px;">b'\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc'</a> <a href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/" style="font-size: 10px;">b'\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8'</a> <a href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/" style="font-size: 10px;">b'\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97'</a> <a href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/" style="font-size: 10px;">b'\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0'</a> <a href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/" style="font-size: 10px;">b'\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97'</a> <a href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/" style="font-size: 10px;">b'\xe5\xae\x8c\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/" style="font-size: 10px;">b'\xe6\x84\x9f\xe6\x83\xb3'</a> <a href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/" style="font-size: 10px;">b'\xe6\x89\x8b\xe5\x86\x99LinkedList'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</a> <a href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/" style="font-size: 10px;">b'\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb'</a> <a href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0'</a> <a href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/" style="font-size: 10px;">b'\xe7\xb4\xa0\xe6\x95\xb0'</a> <a href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/" style="font-size: 10px;">b'css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98'</a> <a href="/tags/b-java-xe5-x8c-x85/" style="font-size: 10px;">b'java\xe5\x8c\x85'</a> <a href="/tags/b-poj-1003/" style="font-size: 10px;">b'poj 1003'</a> <a href="/tags/b-poj-1005/" style="font-size: 10px;">b'poj 1005'</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/08/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-06T04:22:58.000Z">2019-08-06</time></div>
+                    <a href="/2019/08/06/SSM 表单字段int为空，400/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SSM 表单字段int为空，400</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringMVC 无法跳转到Controller">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T10:56:09.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringMVC 无法跳转到Controller</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/Spring 使用xml配置通知/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 使用xml配置通知">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T01:56:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/Spring 使用xml配置通知/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 使用xml配置通知</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring  使用注解实现事务/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring  使用注解实现事务">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T14:56:43.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring  使用注解实现事务/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring  使用注解实现事务</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048-Easyx/">
+                        <span class="tag">b&#39;2048 Easyx&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048/">
+                        <span class="tag">b&#39;2048&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+                        <span class="tag">b&#39;C++\xe5\x87\xbd\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java/">
+                        <span class="tag">b&#39;Java&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+                        <span class="tag">b&#39;Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+                        <span class="tag">b&#39;Java\xe6\x95\xb0\xe7\xbb\x84&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+                        <span class="tag">b&#39;Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+                        <span class="tag">b&#39;\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+                        <span class="tag">b&#39;\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+                        <span class="tag">b&#39;\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+                        <span class="tag">b&#39;\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\xae\x8c\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/">
+                        <span class="tag">b&#39;\xe6\x84\x9f\xe6\x83\xb3&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+                        <span class="tag">b&#39;\xe6\x89\x8b\xe5\x86\x99LinkedList&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+                        <span class="tag">b&#39;\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe7\xb4\xa0\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+                        <span class="tag">b&#39;css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-java-xe5-x8c-x85/">
+                        <span class="tag">b&#39;java\xe5\x8c\x85&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1003/">
+                        <span class="tag">b&#39;poj 1003&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1005/">
+                        <span class="tag">b&#39;poj 1005&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/08/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-06T04:22:58.000Z">2019-08-06</time></div>
+                    <a href="/2019/08/06/SSM 表单字段int为空，400/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SSM 表单字段int为空，400</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringMVC 无法跳转到Controller">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T10:56:09.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringMVC 无法跳转到Controller</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/Spring 使用xml配置通知/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 使用xml配置通知">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T01:56:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/Spring 使用xml配置通知/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 使用xml配置通知</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring  使用注解实现事务/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring  使用注解实现事务">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T14:56:43.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring  使用注解实现事务/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring  使用注解实现事务</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048-Easyx/">
+                        <span class="tag">b&#39;2048 Easyx&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048/">
+                        <span class="tag">b&#39;2048&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+                        <span class="tag">b&#39;C++\xe5\x87\xbd\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java/">
+                        <span class="tag">b&#39;Java&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+                        <span class="tag">b&#39;Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+                        <span class="tag">b&#39;Java\xe6\x95\xb0\xe7\xbb\x84&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+                        <span class="tag">b&#39;Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+                        <span class="tag">b&#39;\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+                        <span class="tag">b&#39;\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+                        <span class="tag">b&#39;\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+                        <span class="tag">b&#39;\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\xae\x8c\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/">
+                        <span class="tag">b&#39;\xe6\x84\x9f\xe6\x83\xb3&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+                        <span class="tag">b&#39;\xe6\x89\x8b\xe5\x86\x99LinkedList&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+                        <span class="tag">b&#39;\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe7\xb4\xa0\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+                        <span class="tag">b&#39;css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-java-xe5-x8c-x85/">
+                        <span class="tag">b&#39;java\xe5\x8c\x85&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1003/">
+                        <span class="tag">b&#39;poj 1003&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1005/">
+                        <span class="tag">b&#39;poj 1005&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="C C++ 打印三角形" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Ich-liebe-dich&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

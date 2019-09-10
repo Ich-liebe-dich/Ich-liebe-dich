@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.9.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Java 集合类 - Ich-liebe-dich</title>
+
+
+    <meta name="description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/89059524  一、Collection 接口方法 ：  add(E e)  remove(Object o)  isEmpty()  iterator()  s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 集合类">
+<meta property="og:url" content="http://yoursite.com/2019/04/06/Java 集合类/index.html">
+<meta property="og:site_name" content="Ich-liebe-dich">
+<meta property="og:description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/89059524  一、Collection 接口方法 ：  add(E e)  remove(Object o)  isEmpty()  iterator()  s">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-09-10T13:29:15.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 集合类">
+<meta name="twitter:description" content="版权声明：本文为博主原创文章，遵循  CC 4.0BY-SA  版权协议，转载请附上原文出处链接和本声明。 本文链接：  https://blog.csdn.net/weixin_43894577/article/details/89059524  一、Collection 接口方法 ：  add(E e)  remove(Object o)  isEmpty()  iterator()  s">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/live2d-widget/autoload.js"></script>
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Java 集合类" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-04-06T11:51:54.000Z">2019-04-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/b-Java/">b'Java'</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1113 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Java 集合类
+            
+        </h1>
+        <div class="content">
+            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/89059524" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/89059524
+</a></p>
+<h1 id="一、Collection-接口"><a href="#一、Collection-接口" class="headerlink" title="一、Collection 接口"></a>一、Collection 接口</h1><p><strong>方法</strong> ：</p>
+<ol>
+<li>add(E e) </li>
+<li>remove(Object o) </li>
+<li>isEmpty() </li>
+<li>iterator() </li>
+<li>size() </li>
+</ol>
+<p><strong>子接口</strong> ： <strong>List</strong> 和 <strong>Set</strong></p>
+<h1 id="二、List-接口"><a href="#二、List-接口" class="headerlink" title="二、List 接口"></a>二、List 接口</h1><p><strong>继承</strong> ：Collection接口，可使用其中搜友方法</p>
+<p><strong>自定义的重要方法</strong> ：</p>
+<ol>
+<li>get(int index) </li>
+<li>set(int index,Object obj) </li>
+</ol>
+<p><strong>特点</strong> ：</p>
+<ol>
+<li>有序，可通过索引访问 </li>
+<li>可重复，可以添加重复的元素 </li>
+</ol>
+<p><strong>实现类</strong> ：</p>
+<ol>
+<li>ArrayList 可变的数组，允许null，访问快，增删慢，线程不安全。 </li>
+<li>LinkedList 双向链表，访问慢，增删快，线程不安全 <a href="https://blog.csdn.net/weixin_43894577/article/details/89057345" target="_blank" rel="noopener"> 手写LinkedList </a></li>
+<li>Vector 线程安全 </li>
+</ol>
+<pre><code>List&lt;String&gt; a = new ArrayList&lt;&gt;();
+a.add(&quot;a&quot;);
+a.add(&quot;b&quot;);
+a.set(1,&quot;b1&quot;);
+System.out.println(a);
+// [a,b1]</code></pre><h1 id="三、Map接口"><a href="#三、Map接口" class="headerlink" title="三、Map接口"></a>三、Map接口</h1><ul>
+<li>存储“键(key)-值(value) 对”,一一对应的关系，因此 <strong>键不能重复，若重复，新的值会替代旧的值</strong></li>
+<li>哈希算法实现，查找、删除、修改效率高 </li>
+</ul>
+<p><strong>方法</strong> ：</p>
+<ol>
+<li>put(K key,V value) </li>
+<li>containsKey(Object key) </li>
+<li>containsValue(Object value) </li>
+<li>get(Object key) </li>
+<li>keySet() </li>
+<li>values() </li>
+</ol>
+<p><strong>实现类</strong> ：</p>
+<ol>
+<li>HashMap 允许使用null值和null键 不保证映射顺序 </li>
+<li>TreeMap 不允许null键 但集合映射具有一定顺序 </li>
+</ol>
+<pre><code>import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.Vector;
+
+
+public class testMap {
+    void test1() {
+        Map&lt;Integer,String&gt; m1 = new HashMap&lt;&gt;();
+
+        m1.put(31,&quot;1&quot;);
+        m1.put(13,&quot;3&quot;);
+        m1.put(211,&quot;2&quot;);
+        m1.put(42,&quot;4&quot;);
+        m1.put(34,&quot;5&quot;);
+        m1.put(101,&quot;6&quot;);
+
+        Map&lt;Integer,String&gt; m2 = new TreeMap&lt;&gt;();
+        m2.put(31,&quot;1&quot;);
+        m2.put(13,&quot;3&quot;);
+        m2.put(211,&quot;2&quot;);
+        m2.put(42,&quot;4&quot;);
+        m2.put(34,&quot;5&quot;);
+        m2.put(101,&quot;6&quot;);
+
+        System.out.println(m1);
+        System.out.println(m2);
+    }
+    public static void main(String[] args) {
+        new testMap().test1();
+    }
+}</code></pre><p>结果：</p>
+<pre><code>{34=5, 211=2, 101=6, 42=4, 13=3, 31=1} //无序
+{13=3, 31=1, 34=5, 42=4, 101=6, 211=2}  //有序</code></pre><ul>
+<li>HashMap效率高于TreeMap;在需要排序的Map时才选用TreeMap。 </li>
+</ul>
+<h1 id="四、Set接口"><a href="#四、Set接口" class="headerlink" title="四、Set接口"></a>四、Set接口</h1><p><strong>继承</strong> ：Collection接口<br><strong>方法</strong> ：与Collection完全一致<br><strong>特点</strong> ：无序（没有索引，只能遍历查找）、不可重复（不能出现重复元素）<br><strong>实现类</strong> ：</p>
+<ol>
+<li>HashSet 允许null元素 不保证迭代顺序 </li>
+<li>TreeSet 不允许使用null元素 通过实现Comparable接口做到内部的排序 </li>
+</ol>
+<h2 id="HashSet例子："><a href="#HashSet例子：" class="headerlink" title="HashSet例子："></a>HashSet例子：</h2><pre><code>public class Test {
+    public static void main(String[] args) {
+        Set&lt;String&gt; s = new HashSet&lt;String&gt;();
+        s.add(&quot;hello&quot;);
+        s.add(&quot;-&quot;);
+        s.add(&quot;world&quot;);
+        System.out.println(s);
+        s.add(&quot;hello&quot;); //相同的元素不会被加入
+        System.out.println(s);
+        s.add(null);
+        System.out.println(s);
+        s.add(null);
+        System.out.println(s);
+    }
+}</code></pre><p>结果：</p>
+<pre><code>[world, hello, -]
+[world, hello, -]
+[null, world, hello, -]
+[null, world, hello, -]</code></pre><ul>
+<li>打印出来每个元素的位置与添加的位置无关（不保证迭代顺序） </li>
+<li>允许添加null元素，但最多添加一个，因为Set不允许重复。 </li>
+</ul>
+<h2 id="TreeSet例子："><a href="#TreeSet例子：" class="headerlink" title="TreeSet例子："></a>TreeSet例子：</h2><pre><code>package Gaoqi300;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Test1 {
+    public static void main(String[] args) {
+        User u1 = new User(1001, &quot;高淇&quot;, 18);
+        User u2 = new User(2001, &quot;高希希&quot;, 5);
+        User u3 = new User(1599,&quot;xxx&quot;,12);
+        Set&lt;User&gt; set = new TreeSet&lt;User&gt;();
+        set.add(u1);
+        set.add(u2);
+        set.add(u3);
+        System.out.println(set);
+
+        Iterator  iter =set.iterator();
+        while(iter.hasNext()){
+            Object  obj =  iter.next();
+            System.out.println(obj);
+        }
+    }
+}
+
+class User implements Comparable&lt;User&gt; {
+    int id;
+    String uname;
+    int age;
+
+    public User(int id, String uname, int age) {
+        this.id = id;
+        this.uname = uname;
+        this.age = age;
+    }
+    /**
+     * 返回0 表示 this == obj 返回正数表示 this &gt; obj 返回负数表示 this &lt; obj
+     */
+    @Override
+    public int compareTo(User o) {
+        if (this.id &gt; o.id) {
+            return 1;
+        } else if (this.id &lt; o.id) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    public String toString() {
+        return id+&quot; &quot;+age+&quot; &quot;+uname;
+    }
+}</code></pre><p>运行结果：</p>
+<pre><code>[1001 18 高淇, 1599 12 xxx, 2001 5 高希希]
+1001 18 高淇
+1599 12 xxx
+2001 5 高希希</code></pre><ul>
+<li>Set &lt; User &gt; set = new TreeSet&lt; User &gt;(); 尖括号里面的类 <strong>必须实现Comparable接口</strong> ，这样才能实现内部排序。 </li>
+</ul>
+<h1 id="五、遍历集合"><a href="#五、遍历集合" class="headerlink" title="五、遍历集合"></a>五、遍历集合</h1><p>对于Set、List和Map都可使用 <strong>Iterator迭代器</strong></p>
+<pre><code>public class testSet {
+
+     public static void main(String[] args) {
+                Set&lt;String&gt; s = new HashSet&lt;String&gt;();
+                s.add(&quot;hello&quot;);
+                s.add(&quot;-&quot;);
+                s.add(&quot;world&quot;);
+                s.add(&quot;hello&quot;); //相同的元素不会被加入
+                s.add(null);
+                s.add(null);
+
+                for(Iterator iter= s.iterator();iter.hasNext();){
+                    String temp = (String)iter.next();
+                    System.out.println(temp);
+                }
+
+                Iterator iter = s.iterator();
+                while(iter.hasNext()) {
+                    String temp = (String)iter.next();
+                    System.out.println(temp);
+                }
+            }
+}</code></pre><ul>
+<li>对于List，操作与以上类似 </li>
+<li>对于Map，如下： </li>
+</ul>
+<p><strong>根据Key值获取Value</strong> ：</p>
+<pre><code>Map&lt;Integer, Man&gt; maps = new HashMap&lt;Integer, Man&gt;();
+Set&lt;Integer&gt;  keySet =  maps.keySet();  //获取键
+for(Integer id : keySet){
+System.out.println(maps.get(id).name);
+}</code></pre><p>或 <strong>entrySet</strong> ：</p>
+<pre><code>Set&lt;Entry&lt;Integer, Man&gt;&gt;  ss = maps.entrySet();
+for (Iterator iterator = ss.iterator(); iterator.hasNext();) {
+    Entry e = (Entry) iterator.next(); 
+    System.out.println(e.getKey()+&quot;--&quot;+e.getValue());</code></pre><p>除此之外，对于List，也可以结合 <strong>循环和List的get()方法</strong> 遍历集合：</p>
+<pre><code>for(int i=0;i&lt;list.size();i++){//list为集合的对象名
+    String temp = (String)list.get(i);
+    System.out.println(temp);
+}</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/04/14/C++ 模板类 单链表/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">C++ 模板类 单链表</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/06/Java 模拟LinkedList/">
+                <span class="level-item">Java 模拟LinkedList</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img  src="/images/avatar.png" alt="Ich-liebe-dich">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Ich-liebe-dich
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>xxx</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Posts
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        99
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categories
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        43
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Tags
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        27
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
+                Follow</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="https://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="https://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="https://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categories
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/b-2048/">
+            <span class="level-start">
+                <span class="level-item">b'2048'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-2048/b-2048-Easyx/">
+            <span class="level-start">
+                <span class="level-item">b'2048 Easyx'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">b'Algorithm'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-C/">
+            <span class="level-start">
+                <span class="level-item">b'C++'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-C/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'C++\xe5\x87\xbd\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/">
+            <span class="level-start">
+                <span class="level-item">b'Java EE'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/b-Spring/">
+            <span class="level-start">
+                <span class="level-item">b'Spring'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">4</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-EE/b-problems/">
+            <span class="level-start">
+                <span class="level-item">b'problems'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Java/">
+            <span class="level-start">
+                <span class="level-item">b'Java'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Java/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-JavaScript/">
+            <span class="level-start">
+                <span class="level-item">b'JavaScript'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+            <span class="level-start">
+                <span class="level-item">b'Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+            <span class="level-start">
+                <span class="level-item">b'Java\xe6\x95\xb0\xe7\xbb\x84'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Leetcode/">
+            <span class="level-start">
+                <span class="level-item">b'Leetcode'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+            <span class="level-start">
+                <span class="level-item">b'Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-MySQL/">
+            <span class="level-start">
+                <span class="level-item">b'MySQL'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Review/">
+            <span class="level-start">
+                <span class="level-item">b'Review'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-Strange/">
+            <span class="level-start">
+                <span class="level-item">b'Strange'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">5</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Strange/b-Algorithm/">
+            <span class="level-start">
+                <span class="level-item">b'Algorithm'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+            <span class="level-start">
+                <span class="level-item">b'Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+            <span class="level-start">
+                <span class="level-item">b'Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+            <span class="level-start">
+                <span class="level-item">b'\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xae-x8c-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\xae\x8c\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe5-xae-x8c-xe6-x95-xb0/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x89\x8b\xe5\x86\x99LinkedList'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x89-x8b-xe5-x86-x99LinkedList/b-Java/">
+            <span class="level-start">
+                <span class="level-item">b'Java'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+            <span class="level-start">
+                <span class="level-item">b'\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+            <span class="level-start">
+                <span class="level-item">b'\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+            <span class="level-start">
+                <span class="level-item">b'css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-java-xe5-x8c-x85/">
+            <span class="level-start">
+                <span class="level-item">b'java\xe5\x8c\x85'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-oj-selftrain/">
+            <span class="level-start">
+                <span class="level-item">b'oj - selftrain'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">11</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-poj-1003/">
+            <span class="level-start">
+                <span class="level-item">b'poj 1003'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-poj-1005/">
+            <span class="level-start">
+                <span class="level-item">b'poj 1005'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/b-problems/">
+            <span class="level-start">
+                <span class="level-item">b'problems'</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Tag Cloud
+        </h3>
+        <a href="/tags/b-2048-Easyx/" style="font-size: 10px;">b'2048 Easyx'</a> <a href="/tags/b-2048/" style="font-size: 10px;">b'2048'</a> <a href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/" style="font-size: 10px;">b'C++\xe5\x87\xbd\xe6\x95\xb0'</a> <a href="/tags/b-Java/" style="font-size: 10px;">b'Java'</a> <a href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/" style="font-size: 10px;">b'Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2'</a> <a href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/" style="font-size: 10px;">b'Java\xe6\x95\xb0\xe7\xbb\x84'</a> <a href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/" style="font-size: 10px;">b'Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82'</a> <a href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/" style="font-size: 10px;">b'Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93'</a> <a href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/" style="font-size: 10px;">b'Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf'</a> <a href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/" style="font-size: 10px;">b'\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc'</a> <a href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/" style="font-size: 10px;">b'\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8'</a> <a href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/" style="font-size: 10px;">b'\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97'</a> <a href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/" style="font-size: 10px;">b'\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0'</a> <a href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/" style="font-size: 10px;">b'\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97'</a> <a href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/" style="font-size: 10px;">b'\xe5\xae\x8c\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/" style="font-size: 10px;">b'\xe6\x84\x9f\xe6\x83\xb3'</a> <a href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/" style="font-size: 10px;">b'\xe6\x89\x8b\xe5\x86\x99LinkedList'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</a> <a href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0'</a> <a href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/" style="font-size: 10px;">b'\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb'</a> <a href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/" style="font-size: 10px;">b'\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0'</a> <a href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/" style="font-size: 10px;">b'\xe7\xb4\xa0\xe6\x95\xb0'</a> <a href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/" style="font-size: 10px;">b'css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98'</a> <a href="/tags/b-java-xe5-x8c-x85/" style="font-size: 10px;">b'java\xe5\x8c\x85'</a> <a href="/tags/b-poj-1003/" style="font-size: 10px;">b'poj 1003'</a> <a href="/tags/b-poj-1005/" style="font-size: 10px;">b'poj 1005'</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/08/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-06T04:22:58.000Z">2019-08-06</time></div>
+                    <a href="/2019/08/06/SSM 表单字段int为空，400/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SSM 表单字段int为空，400</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringMVC 无法跳转到Controller">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T10:56:09.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringMVC 无法跳转到Controller</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/Spring 使用xml配置通知/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 使用xml配置通知">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T01:56:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/Spring 使用xml配置通知/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 使用xml配置通知</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring  使用注解实现事务/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring  使用注解实现事务">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T14:56:43.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring  使用注解实现事务/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring  使用注解实现事务</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048-Easyx/">
+                        <span class="tag">b&#39;2048 Easyx&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048/">
+                        <span class="tag">b&#39;2048&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+                        <span class="tag">b&#39;C++\xe5\x87\xbd\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java/">
+                        <span class="tag">b&#39;Java&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+                        <span class="tag">b&#39;Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+                        <span class="tag">b&#39;Java\xe6\x95\xb0\xe7\xbb\x84&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+                        <span class="tag">b&#39;Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+                        <span class="tag">b&#39;\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+                        <span class="tag">b&#39;\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+                        <span class="tag">b&#39;\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+                        <span class="tag">b&#39;\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\xae\x8c\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/">
+                        <span class="tag">b&#39;\xe6\x84\x9f\xe6\x83\xb3&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+                        <span class="tag">b&#39;\xe6\x89\x8b\xe5\x86\x99LinkedList&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+                        <span class="tag">b&#39;\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe7\xb4\xa0\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+                        <span class="tag">b&#39;css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-java-xe5-x8c-x85/">
+                        <span class="tag">b&#39;java\xe5\x8c\x85&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1003/">
+                        <span class="tag">b&#39;poj 1003&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1005/">
+                        <span class="tag">b&#39;poj 1005&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recent
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/09/08/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
+                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-06T04:22:58.000Z">2019-08-06</time></div>
+                    <a href="/2019/08/06/SSM 表单字段int为空，400/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SSM 表单字段int为空，400</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SpringMVC 无法跳转到Controller">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-26T10:56:09.000Z">2019-07-26</time></div>
+                    <a href="/2019/07/26/SpringMVC 无法跳转到Controller/" class="title has-link-black-ter is-size-6 has-text-weight-normal">SpringMVC 无法跳转到Controller</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-problems/">b'problems'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/25/Spring 使用xml配置通知/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 使用xml配置通知">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-25T01:56:10.000Z">2019-07-25</time></div>
+                    <a href="/2019/07/25/Spring 使用xml配置通知/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 使用xml配置通知</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring  使用注解实现事务/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring  使用注解实现事务">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T14:56:43.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring  使用注解实现事务/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring  使用注解实现事务</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archives
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">12</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">14</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">9</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">13</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Tags
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048-Easyx/">
+                        <span class="tag">b&#39;2048 Easyx&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-2048/">
+                        <span class="tag">b&#39;2048&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-C-xe5-x87-xbd-xe6-x95-xb0/">
+                        <span class="tag">b&#39;C++\xe5\x87\xbd\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java/">
+                        <span class="tag">b&#39;Java&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe5-xad-x97-xe7-xac-xa6-xe4-xb8-xb2/">
+                        <span class="tag">b&#39;Java\xe5\xad\x97\xe7\xac\xa6\xe4\xb8\xb2&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Java-xe6-x95-xb0-xe7-xbb-x84/">
+                        <span class="tag">b&#39;Java\xe6\x95\xb0\xe7\xbb\x84&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Leetcode231-2-xe7-x9a-x84-xe5-xb9-x82/">
+                        <span class="tag">b&#39;Leetcode231 2\xe7\x9a\x84\xe5\xb9\x82&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe4-xbf-xae-xe6-x94-xb9-xe5-xad-x97-xe4-xbd-x93/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe4\xbf\xae\xe6\x94\xb9\xe5\xad\x97\xe4\xbd\x93&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-Visual-Studio-2017-xe5-x9b-xbe-xe7-x89-x87-xe8-x83-x8c-xe6-x99-xaf/">
+                        <span class="tag">b&#39;Visual Studio 2017\xe5\x9b\xbe\xe7\x89\x87\xe8\x83\x8c\xe6\x99\xaf&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe4-xb8-x80-xe7-xbb-xb4-xe5-xa4-x9a-xe9-xa1-xb9-xe5-xbc-x8f-xe6-xb1-x82-xe5-x80-xbc/">
+                        <span class="tag">b&#39;\xe4\xb8\x80\xe7\xbb\xb4\xe5\xa4\x9a\xe9\xa1\xb9\xe5\xbc\x8f\xe6\xb1\x82\xe5\x80\xbc&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8d-x95-xe9-x93-xbe-xe8-xa1-xa8/">
+                        <span class="tag">b&#39;\xe5\x8d\x95\xe9\x93\xbe\xe8\xa1\xa8&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x8f-xaa-xe5-x87-xba-xe7-x8e-xb0-xe4-xb8-x80-xe6-xac-xa1-xe7-x9a-x84-xe6-x95-xb0-xe5-xad-x97/">
+                        <span class="tag">b&#39;\xe5\x8f\xaa\xe5\x87\xba\xe7\x8e\xb0\xe4\xb8\x80\xe6\xac\xa1\xe7\x9a\x84\xe6\x95\xb0\xe5\xad\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-x9b-x9e-xe6-x96-x87-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\x9b\x9e\xe6\x96\x87\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xa4-xa7-xe6-x95-xb4-xe6-x95-xb0-xe5-x8a-xa0-xe6-xb3-x95-xe8-xbf-x90-xe7-xae-x97/">
+                        <span class="tag">b&#39;\xe5\xa4\xa7\xe6\x95\xb4\xe6\x95\xb0\xe5\x8a\xa0\xe6\xb3\x95\xe8\xbf\x90\xe7\xae\x97&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe5-xae-x8c-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe5\xae\x8c\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x84-x9f-xe6-x83-xb3/">
+                        <span class="tag">b&#39;\xe6\x84\x9f\xe6\x83\xb3&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x89-x8b-xe5-x86-x99LinkedList/">
+                        <span class="tag">b&#39;\xe6\x89\x8b\xe5\x86\x99LinkedList&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xa4-xa7-xe5-x85-xac-xe7-xba-xa6-xe6-x95-xb0-xe4-xb8-x8e-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xa4\xa7\xe5\x85\xac\xe7\xba\xa6\xe6\x95\xb0\xe4\xb8\x8e\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-x9c-x80-xe5-xb0-x8f-xe5-x85-xac-xe5-x80-x8d-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\x9c\x80\xe5\xb0\x8f\xe5\x85\xac\xe5\x80\x8d\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xa8-xa1-xe6-x9d-xbf-xe7-xb1-xbb/">
+                        <span class="tag">b&#39;\xe6\xa8\xa1\xe6\x9d\xbf\xe7\xb1\xbb&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe6-xb0-xb4-xe4-xbb-x99-xe8-x8a-xb1-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe6\xb0\xb4\xe4\xbb\x99\xe8\x8a\xb1\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-xe7-xb4-xa0-xe6-x95-xb0/">
+                        <span class="tag">b&#39;\xe7\xb4\xa0\xe6\x95\xb0&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-css-xe5-xb8-xb8-xe8-xa7-x81-xe9-x97-xae-xe9-xa2-x98/">
+                        <span class="tag">b&#39;css \xe5\xb8\xb8\xe8\xa7\x81\xe9\x97\xae\xe9\xa2\x98&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-java-xe5-x8c-x85/">
+                        <span class="tag">b&#39;java\xe5\x8c\x85&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1003/">
+                        <span class="tag">b&#39;poj 1003&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/b-poj-1005/">
+                        <span class="tag">b&#39;poj 1005&#39;</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Java 集合类" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Ich-liebe-dich&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Posts',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
