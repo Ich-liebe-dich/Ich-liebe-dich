@@ -150,328 +150,6 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-14T14:47:01.000Z">2019-01-14</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/b-Strange/">b'Strange'</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 minutes read (About 1308 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/01/14/久远的游戏/">久远的游戏</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
-<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/86485271" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/86485271
-</a></p>
-<h2 id="一、关于"><a href="#一、关于" class="headerlink" title="一、关于"></a>一、关于</h2><p>这个游戏（或者说不算个游戏，简单的娱乐项目）是很久以前做的，==现在拿出来与大家分享。<br>这个游戏包含了两个小的部分，一个是 <strong>猜数游戏</strong> ，一个是 <strong>算术游戏</strong> ，玩家可以任意挑选并重复游戏，配上了开头可有可无的独白<br><strong>（_φ(❐_❐✧ 人丑就要多读书</strong></p>
-<ul>
-<li>源代码在文章末 </li>
-</ul>
-<h2 id="二、效果图"><a href="#二、效果图" class="headerlink" title="二、效果图"></a>二、效果图</h2><p>无零头的开头 <strong>(｀・ω・´)</strong> ：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20190114224023532.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190114224023532.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>选择 <strong>(￣▽￣)／</strong><br><img src="https://img-blog.csdnimg.cn/20190114224157690.png" alt="在这里插入图片描述"><br>猜数游戏 <strong>(￣.￣)</strong> ：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20190114224243772.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190114224243772.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>算数游戏 <strong>ヽ(ー_ー)ノ</strong> ：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20190114224432461.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20190114224432461.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>全对，送个大爱心 <strong>(￣^￣)</strong> ：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2019011422445014.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/2019011422445014.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)</p>
-<h2 id="三、源代码"><a href="#三、源代码" class="headerlink" title="三、源代码"></a>三、源代码</h2><pre><code>#define _CRT_SECURE_NO_WARNINGS
-#include &lt;iostream&gt;
-#include &lt;conio.h&gt;
-#include &lt;Windows.h&gt;
-#include &lt;cstring&gt;
-#include &lt;ctime&gt;
-#include &lt;cstdlib&gt;
-using namespace std;
-void screen();
-void time();
-void SetPos(COORD);
-void SetPos(int, int);
-void game1();
-void game2();
-
-char name[10];
-int main()
-{
-    screen();//界面
-    int a = 1;
-    while (a)
-    {
-        int answer;//(游戏选择)
-        cout &lt;&lt; &quot;输入数字选择冒险（1or2）：&quot; &lt;&lt; endl;
-        cin &gt;&gt; answer;
-        system(&quot;cls&quot;);
-        switch (answer)
-        {
-        case 1:game1(); break;
-        case 2:game2(); break;
-        }
-        time();
-        cout &lt;&lt; &quot;0 ———— 退出游戏  1 ———— 继续游戏&quot; &lt;&lt; endl;
-        cin &gt;&gt; a;
-    }
-}
-
-void screen()
-{
-    srand(unsigned(time(NULL)));
-    cout &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &quot;欢迎来到冒险岛！&quot; &lt;&lt; endl;
-    system(&quot;pause&quot;);
-    cout &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &quot;你只有完成此地冒险，才能回到现实世界。&quot; &lt;&lt; endl;
-    system(&quot;pause&quot;);
-    cout &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &quot;什么？不乐意？那么你将永远无法回到现实世界！！！&quot; &lt;&lt; endl;
-    system(&quot;pause&quot;);
-    cout &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &apos;\t&apos; &lt;&lt; &quot;请输入名字:&quot;;
-
-    cin &gt;&gt; name;
-    system(&quot;pause&quot;);
-    cout &lt;&lt; &quot;&quot; &lt;&lt; endl;
-    system(&quot;pause&quot;);
-    system(&quot;cls&quot;);
-}
-
-void time()//获取系统时间
-{
-    time_t tm;
-    time(&amp;tm);
-    char tmp[128] = { NULL };
-    strcpy(tmp, ctime(&amp;tm));
-    cout &lt;&lt; &quot;当前时间：&quot; &lt;&lt; endl;;
-    cout &lt;&lt; tmp &lt;&lt; endl;
-}
-
-void SetPos(COORD a)// set cursor //光标定位1
-{
-    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleCursorPosition(out, a);
-}
-
-void SetPos(int i, int j)// set cursor//光标定位2
-{
-    COORD pos = { i, j };
-    SetPos(pos);
-}
-
-void game1()
-{
-    cout &lt;&lt; &quot;规则如下：&quot; &lt;&lt; endl &lt;&lt; endl;//游戏规则
-    cout &lt;&lt; &quot;每个骰子有6面，这些面包含1、2、3、4、5、6个点&quot;;
-    cout &lt;&lt; &quot;，投两枚骰子之后，计算点数之和。如果第一次投的点数和为7或11，则游戏者获胜；&quot;;
-    cout &lt;&lt; &quot;如果第一次投的点数和为2、3或12，则游戏者输；如果第一次投的点数和为4、5、6、8、9或10，则&quot;;
-    cout &lt;&lt; &quot;将这个和作为游戏者获胜需要掷出的点数，继续投骰子，&quot;;
-    cout &lt;&lt; &quot;直到赚到该点数时算是游戏者获胜。如果投掷7次仍未赚到该点数，则游戏者输。&quot; &lt;&lt; endl &lt;&lt; endl;
-
-    srand(unsigned(time(NULL)));//界面准备
-    int count = 7; int target; int a;
-    cout &lt;&lt; &quot;target: 7or11&quot; &lt;&lt; endl &lt;&lt; endl;
-    cout &lt;&lt; &quot;a&quot; &lt;&lt; &apos;\t&apos; &lt;&lt; &quot;b&quot; &lt;&lt; &quot;     &quot; &lt;&lt; &quot;a + b&quot; &lt;&lt; endl;
-
-    while (count)//运行部分
-    {
-        cin &gt;&gt; a;
-        int b = rand() % 6 + 1;
-        int sum = a + b;
-        cout &lt;&lt; a &lt;&lt; &apos;\t&apos; &lt;&lt; b &lt;&lt; &apos;\t&apos; &lt;&lt; sum &lt;&lt; endl;
-        if (count == 7)//第一次时的数
-        {
-            if (sum == 7 || sum == 11)
-            {
-                cout &lt;&lt; &quot;You are win!&quot; &lt;&lt; endl;
-                return ;
-            }
-            else if (sum == 2 || sum == 3 || sum == 12)
-            {
-                cout &lt;&lt; &quot;You are defeated!&quot; &lt;&lt; endl;
-                return ;
-            }
-            else if (sum == 4 || sum == 5 || sum == 6 || sum == 8 || sum == 9 || sum == 10)//当第一次的点数之和位这些值时，改变目标值
-            {
-                target = sum;
-                cout &lt;&lt; endl &lt;&lt; &quot;target:&quot; &lt;&lt; target &lt;&lt; endl &lt;&lt; endl;
-            }
-        }
-        else//非第一次后改变目标值
-        {
-            if (sum == target)
-            {
-                cout &lt;&lt; &quot;You are win!&quot; &lt;&lt; endl;
-                return ;
-            }
-        }
-        count--;
-    }
-
-    if (count == 0)//7次后未达到目标，判定为输
-    {
-        cout &lt;&lt; &quot;You are defeated!&quot; &lt;&lt; endl;
-    }
-    return;
-}
-
-void game2()
-{
-    char start;//start the game
-    int  answer;//choose diffculty level
-    char operation;//choose the operation
-    int a, b, result, r;
-    int mark = 0;
-    cout &lt;&lt; &quot;************arithmetic game***************&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Are you ready? input T to start game!&quot; &lt;&lt; endl;
-    while (1)
-    {
-        cin &gt;&gt; start;
-        if (start == &apos;T&apos;)
-        {
-            break;
-        }
-        else
-        {
-            cout &lt;&lt; &quot;error!\n&quot;;
-        }
-    }
-    cout &lt;&lt; &quot;*********************************************&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Please choose diffculty level(1 or 2):&quot;;
-    while (1)
-    {
-        cin &gt;&gt; answer;
-        if (answer == 1 || answer == 2)
-        {
-            break;
-        }
-        else
-        {
-            cout &lt;&lt; &quot;error!\n&quot;;
-            continue;
-        }
-    }
-    cout &lt;&lt; &quot;You have chosen diffculty level&quot; &lt;&lt; &quot; &quot; &lt;&lt; answer &lt;&lt; endl;
-    cout &lt;&lt; &quot;*********************************************&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Please input the operation( + or - or * ):&quot;;
-    while (1)
-    {
-        cin &gt;&gt; operation;
-        if (operation == &apos;+&apos; || operation == &apos;-&apos; || operation == &apos;*&apos;)
-        {
-            break;
-        }
-        else
-        {
-            cout &lt;&lt; &quot;error!\n&quot;;
-        }
-    }
-    cout &lt;&lt; &quot;You have chosen operation&quot; &lt;&lt; &quot; &quot; &lt;&lt; operation &lt;&lt; endl;
-    cout &lt;&lt; &quot;*********************************************&quot; &lt;&lt; endl;
-    for (int i = 1; i &lt;= 10; i++)
-    {
-        while (1)
-        {
-            if (answer == 1)
-            {
-                a = rand() % 10 + 1;
-                b = rand() % 10 + 1;
-            }
-            if (answer == 2)
-            {
-                a = rand() % 100 + 10;
-                b = rand() % 100 + 10;
-            }
-            if (operation == &apos;-&apos;)
-            {
-                if (a &lt; b)
-                    continue;
-            }
-
-            break;
-        }
-        cout &lt;&lt; a &lt;&lt; operation &lt;&lt; b &lt;&lt; &quot;=&quot;;
-        cin &gt;&gt; result;
-        switch (operation)
-        {
-        case &apos;+&apos;: r = a + b; break;
-        case &apos;-&apos;: r = a - b; break;
-        case &apos;*&apos;: r = a * b; break;
-        }
-        if (r == result)
-        {
-            cout &lt;&lt; &quot;mark+10!!!!!!!!&quot; &lt;&lt; endl;
-            mark += 10;
-        }
-        else
-            cout &lt;&lt; &quot;Wrong~~~&quot; &lt;&lt; endl;
-    }
-    cout &lt;&lt; name &lt;&lt; &quot;,your mark is &quot; &lt;&lt; mark &lt;&lt; endl;
-    if (mark &lt;= 100 &amp;&amp; mark &gt;= 90)
-    {
-        cout &lt;&lt; &quot;Your level is S!!!!!!!!&quot; &lt;&lt; endl;
-        cout &lt;&lt; &quot;You are 666 and you get a heart! &quot; &lt;&lt; endl;
-        for (float y = 1.5f; y &gt; -1.5f; y -= 0.1f)
-        {
-            for (float x = -1.5f; x &lt; 1.5f; x += 0.05f)
-            {
-                float a = x * x + y * y - 1;
-                putchar(a * a * a - x * x * y * y * y &lt;= 0.0f ? &apos;*&apos; : &apos; &apos;);
-            }
-            putchar(&apos;\n&apos;);
-        }
-        cout &lt;&lt; endl;
-    }
-    else if (mark &lt; 90 &amp;&amp; mark &gt;= 80)
-    {
-        cout &lt;&lt; &quot;Your level is A!!!!!!&quot; &lt;&lt; endl;
-        cout &lt;&lt; &quot;You are excellent!you get a triangle! &quot; &lt;&lt; endl;
-        for (int i = 0; i &lt;= 5; i++)
-        {
-            for (int j = 0; j &lt; 5 - i; j++)
-            {
-                putchar(&apos; &apos;);
-            }
-            for (int k = 0; k &lt; 2 * i - 1; k++)
-            {
-                cout &lt;&lt; &quot;*&quot;;
-            }
-            cout &lt;&lt; endl;
-        }
-        cout &lt;&lt; endl;
-    }
-    else if (mark &lt; 80 &amp;&amp; mark &gt;= 70)
-    {
-        cout &lt;&lt; &quot;Your level is B!!!!\nAdd oil!&quot; &lt;&lt; endl;
-    }
-    else if (mark &lt; 70 &amp;&amp; mark &gt;= 60)
-    {
-        cout &lt;&lt; &quot;Your level is C!!&quot; &lt;&lt; endl;
-    }
-    else
-    {
-        cout &lt;&lt; &quot;Your fail to this test!&quot; &lt;&lt; endl;
-    }
-}</code></pre>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-01-14T14:24:27.000Z">2019-01-14</time>
                 
                 <div class="level-item">
@@ -1761,6 +1439,1138 @@ e-7//非法，缺少尾数
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-12-28T03:39:14.000Z">2018-12-28</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/b-Strange/">b'Strange'</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    33 minutes read (About 4888 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2018/12/28/学生成绩管理系统（简易本地版）/">学生成绩管理系统（简易本地版）</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/85317488" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/85317488
+</a></p>
+<h2 id="学生成绩管理系统（简易本地版）"><a href="#学生成绩管理系统（简易本地版）" class="headerlink" title="学生成绩管理系统（简易本地版）"></a>学生成绩管理系统（简易本地版）</h2><p><strong>一、概述</strong></p>
+<p>平台：Windows 10 ，Microsoft Visual Studio 2017<br>语言：C++，面向过程<br>完成日期：2018/12/27<br>主要功能：<br><strong><em>1. 添加学生的信息（包括</em> 学号，姓名，性别，成绩） **<br>_</strong>2. 显示学生的信息** _<br>_<strong>3.查询学生的信息（ 以学号或姓名的方式查询）</strong> _<br>_<strong>4.修改学生的信息</strong> _<br>_<strong>5.保存学生的信息（txt文件）</strong> _<br>_*<em><del>6.删除和排序学生的信息</del> ，暂不支持 *</em> _<br>除此外还用Windows.h头文件里面的光标定位函数做了一个键盘操作界面和小动画。</p>
+<p><strong>二、 用到了哪些知识？</strong><br>1.C++基本的语法（结构体，函数，输入输出流，文件操作流等）<br>2.system函数</p>
+<ul>
+<li>函数原型:int system(const char *command); </li>
+<li>头文件：&lt; <strong>cstdlib</strong> &gt; 或 &lt; <strong>process.h</strong> &gt;</li>
+<li>功能:在C++代码中执行 DOS (Disk Operation System,磁盘操作系统) 指令。 </li>
+<li>常用的函数：<br>system(“cls”) //清屏<br>system(“pause”) //按任意键<br>system(“title xxx”)//设置标题为xxx<br>system(“color 02”)// 黑底绿字<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/2018122810141758.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/2018122810141758.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)</li>
+</ul>
+<p><strong>三、主要功能的说明</strong><br><strong>1. 头文件预览</strong></p>
+<pre><code>//student.h
+#pragma once
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;//exit()函数
+#include &lt;Windows.h&gt;//光标定位
+#include &lt;fstream&gt;//C++ I/O流
+#include &lt;string&gt;
+#include &lt;conio.h&gt;
+using namespace std;
+void SetPos(COORD a);//光标定位
+void SetPos(int i, int j);
+void HideCursor();//隐藏光标
+void show();//展现学生信息
+void input();//录入信息
+void search();//查找信息
+void print();//保存本地txt文件
+void load();//加载动画
+void modify();//修改信息
+void menu_flash();//菜单子模块
+int menu_choose();
+void theme();//选择背景色
+void menu();//主菜单
+void help();//开局动画之一</code></pre><p><strong>2.关于一些变量的说明</strong><br>首先定义了一个结构体student，并申明了一个students。</p>
+<pre><code>struct student
+{
+    string Number;
+    string Name;
+    string Sex;
+    int Clanguage;
+    int English;
+    int Math;
+};
+
+student students;
+const char *txtfile = &quot;2333.txt&quot;;//文件名
+const char *datfile = &quot;2333.dat&quot;;
+
+ifstream a;//a和b都对dat操作
+ofstream b;
+ofstream d;//d对txt操作
+string file;//对txt重命名
+string endline = &quot;.txt&quot;;//添加后缀，保存为txt文件时用于重命名
+int ct = 1;//指针位置+1，用于修改时确认指针的位置</code></pre><p><strong>3.主要函数说明</strong><br>(1)录入学生信息<br>直接打开dat文件进行输入，最后记得要关闭文件。</p>
+<pre><code>void input()
+{
+    system(&quot;cls&quot;);
+    b.open(datfile, ios_base::binary | ios_base::out | ios_base::app);
+    if (!b.is_open())
+    {
+        cout &lt;&lt; &quot;\a文件打开失败,请稍后重试.&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int c = 1;
+    cout &lt;&lt; &quot;格式:\t&quot;;
+    cout &lt;&lt; &quot;学号\t\t姓名\t性别\t\tC++成绩\t\t英语成绩\t\t高等数学&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;               各项信息间以空格隔开\n&quot;;
+    while (c)
+    {
+        cin &gt;&gt; students.Number;
+        cin &gt;&gt; students.Name;
+        cin &gt;&gt; students.Sex;
+        cin &gt;&gt; students.Clanguage;
+        cin &gt;&gt; students.English;
+        cin &gt;&gt; students.Math;
+        b.write((char *)&amp;students, sizeof students);
+        cout &lt;&lt; &quot;0 ———— 退出   1 ———— 继续输入:&quot;;
+        cin &gt;&gt; c;
+    }
+    b.close();
+}</code></pre><p>（2）显示学生的信息<br>其中的变量ct为序号，用于修改信息时确认指针的位置。</p>
+<pre><code>void show()//打开dat文件并输出到界面上
+{
+    system(&quot;cls&quot;);
+    ct = 1;
+    a.open(datfile, ios_base::binary | ios_base::in);
+    if (a.is_open())
+    {
+        cout &lt;&lt; &quot;\t\t\t学生信息表:\n\n&quot;;
+        cout &lt;&lt; &quot;序号\t学号\t\t姓名\t性别\tC++\t英语\t高等数学&quot; &lt;&lt; endl;
+        while (a.read((char *)&amp;students, sizeof students))
+        {
+            cout &lt;&lt; ct++ &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Math &lt;&lt; endl;
+        }
+        a.close();
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a信息加载失败!请初始化后重试！&quot;;
+    }
+}</code></pre><p>（3）查询学生的信息<br>打开dat文件，获取学生的信息，根据用户的选择来搜索比较对应信息。如果相等，则输出该学生信息，否则代表无该学生的信息。<br>变量choose用来响应用户的操作（退出，姓名查找和学号查找）；<br>变量flag用来确认是否查找成功；<br>最后别忘了关闭文件。</p>
+<pre><code>void search()//
+{
+    system(&quot;cls&quot;);
+    int choose;
+    while (1)
+    {
+        a.open(datfile, ios_base::binary | ios_base::in);
+        cout &lt;&lt; &quot;0 ———— 退出  1 ———— 按姓名查找  2 ———— 按学号查找\n&quot;;
+        cin &gt;&gt; choose;
+        string name;
+        string num;
+        if (choose == 0)
+        {
+            a.close();
+            return;
+        }
+        if (choose == 1)
+        {
+            cout &lt;&lt; &quot;请输入查找姓名:&quot;;
+            cin &gt;&gt; name;
+        }
+        if (choose == 2)
+        {
+            cout &lt;&lt; &quot;请输入查找学号&quot;;
+            cin &gt;&gt; num;
+        }
+        if (a.is_open())
+        {
+            int flag = 0;//判断是否找到
+            cout &lt;&lt; &quot;学号\t姓名\t性别\tC++\t英语\t高等数学&quot; &lt;&lt; endl;
+            while (a.read((char *)&amp;students, sizeof students))
+            {
+                if (choose == 1 &amp;&amp; students.Name == name)
+                {
+                    cout &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Math &lt;&lt; endl;
+                    flag = 1;
+                }
+                if (choose == 2 &amp;&amp; students.Number == num)
+                {
+                    cout &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Math &lt;&lt; endl;
+                    flag = 1;
+                }
+            }
+            if (flag == 0)
+            {
+                cout &lt;&lt; &quot;查询不到此信息！\n&quot;;
+            }
+        }
+        else
+        {
+            cout &lt;&lt; &quot;\a信息加载失败!请初始化后重试！&quot;;
+        }
+        a.close();
+    }
+}</code></pre><p>（4）修改学生的信息<br>变量a_1的类型为fstream，可读可写。<br>根据序号确认被修改的学生的信息在文件中的位置，并进行重新输入。</p>
+<pre><code>void modify()//修改
+{
+    fstream a_1;
+    a_1.open(datfile, ios_base::in | ios_base::out | ios_base::binary);
+    if (a_1.is_open())
+    {
+        int point;//想修改的数字
+        int end = 1;//
+        while (end)
+        {
+            show();
+            cout &lt;&lt; &quot;0 ———— 退出&quot;;
+            cout &lt;&lt; &quot;请输入对应序号:&quot;;
+            cin &gt;&gt; point;
+            if (point &gt;= 1 &amp;&amp; point &lt;= ct - 1)
+            {
+                streampos place = (point - 1) * sizeof students;
+                a_1.seekg(place);
+                if (a_1.fail())
+                {
+                    cout &lt;&lt; &quot;查找错误...\n&quot;;
+                    exit(EXIT_FAILURE);
+                }
+
+                a_1.read((char *)&amp;students, sizeof students);
+                cout &lt;&lt; &quot;您即将修改的信息如下:\n&quot;;
+                cout &lt;&lt; point &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Math &lt;&lt; endl;
+
+
+                if (a_1.eof())
+                {
+                    a_1.clear();
+                }
+
+                cout &lt;&lt; &quot;学号:________\b\b\b\b\b\b&quot;;
+                cin &gt;&gt; students.Number;
+                cout &lt;&lt; &quot;姓名:________\b\b\b\b\b\b&quot;;
+                cin &gt;&gt; students.Name;
+                cout &lt;&lt; &quot;性别:___\b\b\b&quot;;
+                cin &gt;&gt; students.Sex;
+                cout &lt;&lt; &quot;C++:___\b\b\b&quot;;
+                cin &gt;&gt; students.Clanguage;
+                cout &lt;&lt; &quot;英语:___\b\b\b&quot;;
+                cin &gt;&gt; students.English;
+                cout &lt;&lt; &quot;高等数学:___\b\b\b&quot;;
+                cin &gt;&gt; students.Math;
+
+                a_1.seekp(place);
+                a_1.write((char *)&amp;students, sizeof students);
+                if (a_1.fail())
+                {
+                    cout &lt;&lt; &quot;写入错误\n&quot;;
+                    exit(EXIT_FAILURE);
+                }
+
+
+                show();
+                cout &lt;&lt; &quot;是否继续修改？\n&quot;
+                    &lt;&lt; &quot;0 ———— 退出  1 ———— 继续&quot;;
+                cin &gt;&gt; end;
+                if (end == 0)
+                    a_1.close();
+                system(&quot;cls&quot;);
+            }
+            else if (point == 0)
+            {
+                a_1.close();
+                return;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;\a输入的数字不在有效范围&quot; &lt;&lt; &quot;(&quot; &lt;&lt; 1 &lt;&lt; &quot;~&quot; &lt;&lt; ct - 1 &lt;&lt; &quot;)&quot;
+                    &lt;&lt; &quot;内,请重新输入.\n&quot;;
+                system(&quot;pause&quot;);
+                system(&quot;cls&quot;);
+            }
+        }
+
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a无法打开&quot; &lt;&lt; datfile &lt;&lt; endl;
+    }
+}</code></pre><p>（5）保存学生的信息<br>打开dat文件，创建并打开txt文件，将dat文件内的信息写入txt文件，写入后关闭dat和txt文件，完成操作。<br>在这里，提供了重命名操作，最终文件会以txt格式保存在程序所在的目录。</p>
+<pre><code>void print()
+{
+    system(&quot;cls&quot;);
+    a.open(datfile, ios_base::binary | ios_base::in);
+    if (a.is_open())
+    {
+        cout &lt;&lt; &quot;文件名:&quot; &lt;&lt; txtfile &lt;&lt; &quot;,是否修改文件名？\n&quot;;
+        cout &lt;&lt; &quot;  /\\  0 ———— 否&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot; /!!\\ 1 ———— 是&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;/    \\若文件夹中出现同名文件,可能将其覆盖.\n&quot;
+            &lt;&lt; &quot;￣￣￣\n&quot;;
+
+        int answer;
+        while (1)//修改文件名
+        {
+            cin &gt;&gt; answer;
+            if (answer == 1)
+            {
+                cout &lt;&lt; &quot;请输入文件名 (不要加后缀）:&quot;;
+                cin &gt;&gt; file;
+                d.open((file + endline), ios_base::out);
+                break;
+            }
+            else if (answer == 0)
+            {
+                d.open(txtfile, ios_base::out);
+                break;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;输入错误,请重新输入!\n&quot;;
+                continue;
+            }
+        }
+
+        if (d.is_open())
+        {
+            d &lt;&lt; &quot;学号\t姓名\t性别\t\tC++\t\t英语\t\t高等数学\n&quot;;
+            while (a.read((char *)&amp;students, sizeof students))
+            {
+                d &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Sex &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Clanguage &lt;&lt; &quot;\t\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Math &lt;&lt; endl;
+            }
+            cout &lt;&lt; &quot;保存成功!&quot;;
+            cout &lt;&lt; &quot;您的文件名为&quot; &lt;&lt; (answer == 1 ? (file + endline) : txtfile);
+            cout &lt;&lt; &quot;请及时提取相关文件，以免文件失效或损坏\n&quot;;
+            d.close();
+        }
+        a.close();
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a文件载入失败,请稍后重试.\n&quot;;
+    }
+}</code></pre><p>（6）其他部分<br>加载动画</p>
+<pre><code>void load()//动画1
+{
+    system(&quot;pause&quot;);
+    system(&quot;cls&quot;);
+    SetPos(50, 14);
+    string LOAD = &quot;加载中&quot;;
+    cout &lt;&lt; LOAD;
+    for (int i = 0; i &lt; 6; i++)
+    {
+        Sleep(150);
+        cout &lt;&lt; &quot;.&quot;;
+    }
+    system(&quot;cls&quot;);
+}
+
+void help()//动画2
+{
+    Sleep(100);
+    system(&quot;cls&quot;);
+    system(&quot;color 0E&quot;);
+    SetPos(12, 7);
+    cout &lt;&lt; &quot;☆☆★★★★★★★★★★★★★★★★★★★☆☆&quot;;
+    SetPos(12, 8);
+    cout &lt;&lt; &quot;☆★　　　　　　　　　　　　　　　　　★☆&quot;;
+    SetPos(12, 9);
+    cout &lt;&lt; &quot;☆★                   ★★★　　　★★★　★☆&quot;;
+    SetPos(12, 10);
+    cout &lt;&lt; &quot;☆★　         　　★☆☆☆★☆★☆☆☆★　★☆  &quot;;
+    SetPos(12, 11);
+    cout &lt;&lt; &quot;☆★　　★★　　　 ★★☆☆☆★☆☆☆☆★　★☆&quot;;
+    SetPos(12, 12);
+    cout &lt;&lt; &quot;☆★　★☆☆★　★★☆★☆☆☆☆☆☆☆★　★☆ &quot;;
+    SetPos(12, 13);
+    cout &lt;&lt; &quot;☆★　★☆☆☆★☆☆★★☆☆☆☆☆☆★　　★☆ &quot;;
+    SetPos(12, 14);
+    cout &lt;&lt; &quot;☆★　　★☆☆☆☆☆★★☆☆☆☆☆★　　　★☆&quot;;
+    SetPos(12, 15);
+    cout &lt;&lt; &quot;☆★　　　★☆☆☆★　　★☆☆☆★　　　　★☆  &quot;;
+    SetPos(12, 16);
+    cout &lt;&lt; &quot;☆★　　　　★☆★　　　　　★　　　　　　★☆  &quot;;
+    SetPos(12, 17);
+    cout &lt;&lt; &quot;☆★　　　　　★　　　　　　　         　★☆  &quot;;
+    SetPos(12, 18);
+    cout &lt;&lt; &quot;☆★　　Ich/liebe/dich制作　　　　　　　★☆&quot;;
+    SetPos(12, 19);
+    cout &lt;&lt; &quot;☆☆★★★★★★★★★★★★★★★★★★★☆☆★★★&quot;;
+    Sleep(1000);
+    system(&quot;cls&quot;);
+    system(&quot;color 0F&quot;);
+}</code></pre><p>菜单界面（键盘操作）<br>主要思路:用户输入操作时，光标会向指定方向移动，移动后对应的值会发生改变，当用户确认操作时，对应的值会代入特定函数计算,并返回这个计算出的值，根据这个值来确认要调用哪一个函数（switch）。</p>
+<pre><code>/***************************
+*****以下为菜单操作子模块***
+*************************/
+
+void menu_flash()
+{
+    for (int i = 12; i &lt;= 18; i++)
+    {
+        SetPos(42, i);
+        cout &lt;&lt; &quot;　&quot;;
+    }
+}
+
+/***************************
+*****以下为菜单操作模块*****
+**************************/
+
+int menu_choose()
+{
+    int j = 13;
+    while (1)
+    {
+        if (_kbhit())
+        {
+            char x = _getch();
+            switch (x)
+            {
+            case &apos;w&apos;:
+            {
+                if (j == 13 || j == 14 || j == 15 || j == 16 || j == 17 || j == 18 || j == 19)
+                {
+                    menu_flash();
+                    j = j - 1;
+                    SetPos(42, j);
+                    cout &lt;&lt; &quot;&gt;&gt;&quot;;
+                }
+                else if (j == 12 &amp;&amp; x == &apos;w&apos;)
+                {
+                    j = 19;
+                }
+                break;
+            }
+            case &apos;s&apos;:
+            {
+                if (j == 11 || j == 12 || j == 13 || j == 14 || j == 15 || j == 16 || j == 17)
+                {
+                    menu_flash();
+                    j = j + 1;
+                    SetPos(42, j);
+                    cout &lt;&lt; &quot;&gt;&gt;&quot;;
+                }
+                else if (j == 18 &amp;&amp; x == &apos;s&apos;)
+                {
+                    j = 11;
+                }
+                break;
+            }
+            case &apos;k&apos;:
+            {
+                return j - 11;
+            }
+            }
+        }
+    }
+}
+
+/***************************
+*******以下为菜单界面*******
+**************************/
+void menu()
+{
+    system(&quot;cls&quot;);
+    SetPos(43, 5);
+    string title = &quot;学生成绩管理系统&quot;;
+
+    for (int i = 0; i &lt; title.size(); i++)
+    {
+        Sleep(40);
+        cout &lt;&lt; title[i];
+    }
+    SetPos(12, 7);
+    cout &lt;&lt; &quot; ______________________________________________________________________________ &quot;;
+    SetPos(12, 8);
+    cout &lt;&lt; &quot;|             w : 上            s : 下          k : 确认                        |&quot;;
+    for (int i = 9; i &lt;= 10; i++)
+    {
+        SetPos(12, i);
+        cout &lt;&lt; &quot;|                                                                               |&quot;;
+    }
+    SetPos(12, 11);
+    cout &lt;&lt; &quot;|  ***************************************************************************  |&quot;;
+    SetPos(12, 12);
+    cout &lt;&lt; &quot;|  ************************      1.录入信息     ******************************  |&quot;;
+    SetPos(12, 13);
+    cout &lt;&lt; &quot;|  ************************      2.查看信息     ******************************  |&quot;;
+    SetPos(12, 14);
+    cout &lt;&lt; &quot;|  ************************      3.修改信息     ******************************  |&quot;;
+    SetPos(12, 15);
+    cout &lt;&lt; &quot;|  ************************      4.打印文件     ******************************  |&quot;;
+    SetPos(12, 16);
+    cout &lt;&lt; &quot;|  ************************      5.  搜索       ******************************  |&quot;;
+    SetPos(12, 17);
+    cout &lt;&lt; &quot;|  ************************      6.  主题       ******************************  |&quot;;
+    SetPos(12, 18);
+    cout &lt;&lt; &quot;|  ************************      7.  关于       ******************************  |&quot;;
+    SetPos(12, 19);
+    cout &lt;&lt; &quot;|  ***************************************************************************  |&quot;;
+    for (int i = 20; i &lt;= 22; i++)
+    {
+        SetPos(12, i);
+        cout &lt;&lt; &quot;|                                                                               |&quot;;
+    }
+    SetPos(12, 23);
+    cout &lt;&lt; &quot; ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣ &quot;;
+}</code></pre><p><strong>四，效果</strong><br>打开界面时的动画<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228111708867.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228111708867.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>主界面<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228111943907.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228111943907.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>在没有初始化（录入信息）前进行操作<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228112013188.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228112013188.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>录入信息<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228113218895.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228113218895.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>查看信息<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228113141181.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228113141181.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)<br>保存本地文档:<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228113239596.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228113239596.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)</p>
+<p>保存本地txt文档：<br>![在这里插入图片描述](<a href="https://img-blog.csdnimg.cn/20181228113047458.png?x-oss-" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20181228113047458.png?x-oss-</a><br>process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzg5NDU3Nw==,size_16,color_FFFFFF,t_70)</p>
+<p><strong>五，源代码</strong><br>1.头文件（student.h)</p>
+<pre><code>#pragma once
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;//exit()函数
+#include &lt;Windows.h&gt;//光标定位
+#include &lt;fstream&gt;//C++ I/O流
+#include &lt;string&gt;
+#include &lt;conio.h&gt;
+using namespace std;
+void SetPos(COORD a);//光标定位
+void SetPos(int i, int j);
+void HideCursor();//隐藏光标
+void show();//展现学生信息
+void input();//录入信息
+void search();//查找信息
+void print();//保存本地txt文件
+void load();//加载动画
+void modify();//修改信息
+void menu_flash();//菜单子模块
+int menu_choose();
+void theme();//选择背景色
+void menu();//主菜单
+void help();//开局动画之一</code></pre><p>2.student.cpp</p>
+<pre><code>#include &quot;student.h&quot;
+
+struct student
+{
+    string Number;
+    string Name;
+    string Sex;
+    int Clanguage;
+    int English;
+    int Math;
+};
+
+const char *txtfile = &quot;2333.txt&quot;;//文件名
+const char *datfile = &quot;2333.dat&quot;;
+student students;
+
+ifstream a;//a和b都对dat操作
+ofstream b;
+ofstream d;//d对txt操作
+string file;//对txt重命名
+string endline = &quot;.txt&quot;;//添加后缀
+int ct = 1;//指针位置+1
+
+void SetPos(COORD a)// set cursor 
+{
+    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(out, a);
+}
+
+void SetPos(int i, int j)// set cursor
+{
+    COORD pos = { i, j };
+    SetPos(pos);
+}
+
+void show()//打开dat文件并输出到界面上
+{
+    system(&quot;cls&quot;);
+    ct = 1;
+    a.open(datfile, ios_base::binary | ios_base::in);
+    if (a.is_open())
+    {
+        cout &lt;&lt; &quot;\t\t\t学生信息表:\n\n&quot;;
+        cout &lt;&lt; &quot;序号\t学号\t\t姓名\t性别\tC++\t英语\t高等数学&quot; &lt;&lt; endl;
+        while (a.read((char *)&amp;students, sizeof students))
+        {
+            cout &lt;&lt; ct++ &lt;&lt; &quot;\t\t&quot;
+                &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                &lt;&lt; students.Math &lt;&lt; endl;
+        }
+        a.close();
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a信息加载失败!请初始化后重试！&quot;;
+    }
+}
+
+/***************************
+*****输出为录入信息模块*****
+*************************/
+void input()
+{
+    system(&quot;cls&quot;);
+    b.open(datfile, ios_base::binary | ios_base::out | ios_base::app);
+    if (!b.is_open())
+    {
+        cout &lt;&lt; &quot;\a文件打开失败,请稍后重试.&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int c = 1;
+    cout &lt;&lt; &quot;格式:\t&quot;;
+    cout &lt;&lt; &quot;学号\t\t姓名\t性别\t\tC++成绩\t\t英语成绩\t\t高等数学&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;               各项信息间以空格隔开\n&quot;;
+    while (c)
+    {
+        cin &gt;&gt; students.Number;
+        cin &gt;&gt; students.Name;
+        cin &gt;&gt; students.Sex;
+        cin &gt;&gt; students.Clanguage;
+        cin &gt;&gt; students.English;
+        cin &gt;&gt; students.Math;
+        b.write((char *)&amp;students, sizeof students);
+        cout &lt;&lt; &quot;0 ———— 退出   1 ———— 继续输入:&quot;;
+        cin &gt;&gt; c;
+    }
+    b.close();
+}
+
+/***************************
+*****输出为搜索信息模块*****
+*************************/
+void search()//
+{
+    system(&quot;cls&quot;);
+    int choose;
+    while (1)
+    {
+        a.open(datfile, ios_base::binary | ios_base::in);
+        cout &lt;&lt; &quot;0 ———— 退出  1 ———— 按姓名查找  2 ———— 按学号查找\n&quot;;
+        cin &gt;&gt; choose;
+        string name;
+        string num;
+        if (choose == 0)
+        {
+            a.close();
+            return;
+        }
+        if (choose == 1)
+        {
+            cout &lt;&lt; &quot;请输入查找姓名:&quot;;
+            cin &gt;&gt; name;
+        }
+        if (choose == 2)
+        {
+            cout &lt;&lt; &quot;请输入查找学号&quot;;
+            cin &gt;&gt; num;
+        }
+        if (a.is_open())
+        {
+            int flag = 0;//判断是否找到
+            cout &lt;&lt; &quot;学号\t姓名\t性别\tC++\t英语\t高等数学&quot; &lt;&lt; endl;
+            while (a.read((char *)&amp;students, sizeof students))
+            {
+                if (choose == 1 &amp;&amp; students.Name == name)
+                {
+                    cout &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Math &lt;&lt; endl;
+                    flag = 1;
+                }
+                if (choose == 2 &amp;&amp; students.Number == num)
+                {
+                    cout &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                        &lt;&lt; students.Math &lt;&lt; endl;
+                    flag = 1;
+                }
+            }
+            if (flag == 0)
+            {
+                cout &lt;&lt; &quot;查询不到此信息！\n&quot;;
+            }
+        }
+        else
+        {
+            cout &lt;&lt; &quot;\a信息加载失败!请初始化后重试！&quot;;
+        }
+        a.close();
+    }
+}
+
+/***************************
+*****输出为本地txt文件*****
+*************************/
+void print()
+{
+    system(&quot;cls&quot;);
+    a.open(datfile, ios_base::binary | ios_base::in);
+    if (a.is_open())
+    {
+        cout &lt;&lt; &quot;文件名:&quot; &lt;&lt; txtfile &lt;&lt; &quot;,是否修改文件名？\n&quot;;
+        cout &lt;&lt; &quot;  /\\  0 ———— 是&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot; /!!\\ 1 ———— 否&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;/    \\若文件夹中出现同名文件,可能将其覆盖.\n&quot;
+            &lt;&lt; &quot;￣￣￣\n&quot;;
+
+        int answer;
+        while (1)//修改文件名
+        {
+            cin &gt;&gt; answer;
+            if (answer == 1)
+            {
+                cout &lt;&lt; &quot;请输入文件名 (不要加后缀）:&quot;;
+                cin &gt;&gt; file;
+                d.open((file + endline), ios_base::out);
+                break;
+            }
+            else if (answer == 0)
+            {
+                d.open(txtfile, ios_base::out);
+                break;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;输入错误,请重新输入!\n&quot;;
+                continue;
+            }
+        }
+
+        if (d.is_open())
+        {
+            d &lt;&lt; &quot;学号\t姓名\t性别\t\tC++\t\t英语\t\t高等数学\n&quot;;
+            while (a.read((char *)&amp;students, sizeof students))
+            {
+                d &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Sex &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Clanguage &lt;&lt; &quot;\t\t&quot; &lt;&lt; students.English &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Math &lt;&lt; endl;
+            }
+            cout &lt;&lt; &quot;保存成功!&quot;;
+            cout &lt;&lt; &quot;您的文件名为&quot; &lt;&lt; (answer == 1 ? (file + endline) : txtfile);
+            cout &lt;&lt; &quot;请及时提取相关文件，以免文件失效或损坏\n&quot;;
+            d.close();
+        }
+        a.close();
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a文件载入失败,请稍后重试.\n&quot;;
+    }
+}
+
+/***************************
+*****以下为界面加载动画*****
+**************************/
+
+void load()
+{
+    system(&quot;pause&quot;);
+    system(&quot;cls&quot;);
+    SetPos(50, 14);
+    string LOAD = &quot;加载中&quot;;
+    cout &lt;&lt; LOAD;
+    for (int i = 0; i &lt; 6; i++)
+    {
+        Sleep(150);
+        cout &lt;&lt; &quot;.&quot;;
+    }
+    system(&quot;cls&quot;);
+}
+
+/***************************
+*****以下为修改信息模块*****
+*************************/
+void modify()//修改
+{
+    fstream a_1;
+    a_1.open(datfile, ios_base::in | ios_base::out | ios_base::binary);
+    if (a_1.is_open())
+    {
+        int point;//想修改的数字
+        int end = 1;
+        while (end)
+        {
+            show();
+            cout &lt;&lt; &quot;0 ———— 退出&quot;;
+            cout &lt;&lt; &quot;请输入对应序号:&quot;;
+            cin &gt;&gt; point;
+            if (point &gt;= 1 &amp;&amp; point &lt;= ct - 1)
+            {
+                streampos place = (point - 1) * sizeof students;
+                a_1.seekg(place);
+                if (a_1.fail())
+                {
+                    cout &lt;&lt; &quot;查找错误...\n&quot;;
+                    exit(EXIT_FAILURE);
+                }
+
+                a_1.read((char *)&amp;students, sizeof students);
+                cout &lt;&lt; &quot;您即将修改的信息如下:\n&quot;;
+                cout &lt;&lt; point &lt;&lt; &quot;\t\t&quot;
+                    &lt;&lt; students.Number &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Name &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Sex &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Clanguage &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.English &lt;&lt; &quot;\t&quot;
+                    &lt;&lt; students.Math &lt;&lt; endl;
+
+
+                if (a_1.eof())
+                {
+                    a_1.clear();
+                }
+
+                cout &lt;&lt; &quot;学号:________\b\b\b\b\b\b&quot;;
+                cin &gt;&gt; students.Number;
+                cout &lt;&lt; &quot;姓名:________\b\b\b\b\b\b&quot;;
+                cin &gt;&gt; students.Name;
+                cout &lt;&lt; &quot;性别:___\b\b\b&quot;;
+                cin &gt;&gt; students.Sex;
+                cout &lt;&lt; &quot;C++:___\b\b\b&quot;;
+                cin &gt;&gt; students.Clanguage;
+                cout &lt;&lt; &quot;英语:___\b\b\b&quot;;
+                cin &gt;&gt; students.English;
+                cout &lt;&lt; &quot;高等数学:___\b\b\b&quot;;
+                cin &gt;&gt; students.Math;
+
+                a_1.seekp(place);
+                a_1.write((char *)&amp;students, sizeof students);
+                if (a_1.fail())
+                {
+                    cout &lt;&lt; &quot;写入错误\n&quot;;
+                    exit(EXIT_FAILURE);
+                }
+
+
+                show();
+                cout &lt;&lt; &quot;是否继续修改？\n&quot;
+                    &lt;&lt; &quot;0 ———— 退出  1 ———— 继续&quot;;
+                cin &gt;&gt; end;
+                if (end == 0)
+                    a_1.close();
+                system(&quot;cls&quot;);
+            }
+            else if (point == 0)
+            {
+                a_1.close();
+                return;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;\a输入的数字不在有效范围&quot; &lt;&lt; &quot;(&quot; &lt;&lt; 1 &lt;&lt; &quot;~&quot; &lt;&lt; ct - 1 &lt;&lt; &quot;)&quot;
+                    &lt;&lt; &quot;内,请重新输入.\n&quot;;
+                system(&quot;pause&quot;);
+                system(&quot;cls&quot;);
+            }
+        }
+
+    }
+    else
+    {
+        cout &lt;&lt; &quot;\a无法打开&quot; &lt;&lt; datfile &lt;&lt; endl;
+    }
+}
+/***************************
+*****以下为菜单操作子模块***
+*************************/
+
+void menu_flash()
+{
+    for (int i = 12; i &lt;= 18; i++)
+    {
+        SetPos(42, i);
+        cout &lt;&lt; &quot;　&quot;;
+    }
+}
+
+/***************************
+*****以下为菜单操作模块*****
+**************************/
+
+int menu_choose()
+{
+    int j = 13;
+    while (1)
+    {
+        if (_kbhit())
+        {
+            char x = _getch();
+            switch (x)
+            {
+            case &apos;w&apos;:
+            {
+                if (j == 13 || j == 14 || j == 15 || j == 16 || j == 17 || j == 18 || j == 19)
+                {
+                    menu_flash();
+                    j = j - 1;
+                    SetPos(42, j);
+                    cout &lt;&lt; &quot;&gt;&gt;&quot;;
+                }
+                else if (j == 12 &amp;&amp; x == &apos;w&apos;)
+                {
+                    j = 19;
+                }
+                break;
+            }
+            case &apos;s&apos;:
+            {
+                if (j == 11 || j == 12 || j == 13 || j == 14 || j == 15 || j == 16 || j == 17)
+                {
+                    menu_flash();
+                    j = j + 1;
+                    SetPos(42, j);
+                    cout &lt;&lt; &quot;&gt;&gt;&quot;;
+                }
+                else if (j == 18 &amp;&amp; x == &apos;s&apos;)
+                {
+                    j = 11;
+                }
+                break;
+            }
+            case &apos;k&apos;:
+            {
+                return j - 11;
+            }
+            }
+        }
+    }
+}
+
+void theme()
+{
+    system(&quot;cls&quot;);
+    cout &lt;&lt; &quot;0.退出\n1.黄色\n2.绿色\n3.典雅白\n4.经典黑(默认)\n&quot;;
+    cout &lt;&lt; &quot;请选择:&quot;;
+    int i;
+    cin &gt;&gt; i;
+    switch (i)
+    {
+    case 4:
+    {
+        cout &lt;&lt; &quot;经典黑&quot;;
+        system(&quot;color 07&quot;);//黑底白字
+        system(&quot;pause&quot;);
+        break;
+    }
+    case 3:
+    {
+        cout &lt;&lt; &quot;典雅白&quot;;
+        system(&quot;color F0&quot;);//白底黑字
+        system(&quot;pause&quot;);
+        break;
+
+    }
+    case 2:
+    {
+        cout &lt;&lt; &quot;绿色&quot;;
+        system(&quot;color 0A&quot;);//黑的浅绿
+        system(&quot;pause&quot;);
+        break;
+    }
+    case 1:
+    {
+        cout &lt;&lt; &quot;黄色&quot;;
+        system(&quot;color E0&quot;);//浅黄底黑字
+        system(&quot;pause&quot;);
+        break;
+    }
+    case 0:
+        return;
+    }
+}
+/***************************
+*******以下为菜单界面*******
+**************************/
+void menu()
+{
+    system(&quot;cls&quot;);
+    SetPos(43, 5);
+    string title = &quot;学生成绩管理系统&quot;;
+
+    for (int i = 0; i &lt; title.size(); i++)
+    {
+        Sleep(40);
+        cout &lt;&lt; title[i];
+    }
+    SetPos(12, 7);
+    cout &lt;&lt; &quot; ______________________________________________________________________________ &quot;;
+    SetPos(12, 8);
+    cout &lt;&lt; &quot;|             w : 上            s : 下          k : 确认                        |&quot;;
+    for (int i = 9; i &lt;= 10; i++)
+    {
+        SetPos(12, i);
+        cout &lt;&lt; &quot;|                                                                               |&quot;;
+    }
+    SetPos(12, 11);
+    cout &lt;&lt; &quot;|  ***************************************************************************  |&quot;;
+    SetPos(12, 12);
+    cout &lt;&lt; &quot;|  ************************      1.录入信息     ******************************  |&quot;;
+    SetPos(12, 13);
+    cout &lt;&lt; &quot;|  ************************      2.查看信息     ******************************  |&quot;;
+    SetPos(12, 14);
+    cout &lt;&lt; &quot;|  ************************      3.修改信息     ******************************  |&quot;;
+    SetPos(12, 15);
+    cout &lt;&lt; &quot;|  ************************      4.打印文件     ******************************  |&quot;;
+    SetPos(12, 16);
+    cout &lt;&lt; &quot;|  ************************      5.  搜索       ******************************  |&quot;;
+    SetPos(12, 17);
+    cout &lt;&lt; &quot;|  ************************      6.  主题       ******************************  |&quot;;
+    SetPos(12, 18);
+    cout &lt;&lt; &quot;|  ************************      7.  关于       ******************************  |&quot;;
+    SetPos(12, 19);
+    cout &lt;&lt; &quot;|  ***************************************************************************  |&quot;;
+    for (int i = 20; i &lt;= 22; i++)
+    {
+        SetPos(12, i);
+        cout &lt;&lt; &quot;|                                                                               |&quot;;
+    }
+    SetPos(12, 23);
+    cout &lt;&lt; &quot; ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣ &quot;;
+}
+/*****************
+**开局动画之一****
+****************/
+void help()
+{
+    Sleep(100);
+    system(&quot;cls&quot;);
+    system(&quot;color 0E&quot;);
+    SetPos(12, 7);
+    cout &lt;&lt; &quot;☆☆★★★★★★★★★★★★★★★★★★★☆☆&quot;;
+    SetPos(12, 8);
+    cout &lt;&lt; &quot;☆★　　　　　　　　　　　　　　　　　★☆&quot;;
+    SetPos(12, 9);
+    cout &lt;&lt; &quot;☆★                   ★★★　　　★★★　★☆&quot;;
+    SetPos(12, 10);
+    cout &lt;&lt; &quot;☆★　         　　★☆☆☆★☆★☆☆☆★　★☆  &quot;;
+    SetPos(12, 11);
+    cout &lt;&lt; &quot;☆★　　★★　　　 ★★☆☆☆★☆☆☆☆★　★☆&quot;;
+    SetPos(12, 12);
+    cout &lt;&lt; &quot;☆★　★☆☆★　★★☆★☆☆☆☆☆☆☆★　★☆ &quot;;
+    SetPos(12, 13);
+    cout &lt;&lt; &quot;☆★　★☆☆☆★☆☆★★☆☆☆☆☆☆★　　★☆ &quot;;
+    SetPos(12, 14);
+    cout &lt;&lt; &quot;☆★　　★☆☆☆☆☆★★☆☆☆☆☆★　　　★☆&quot;;
+    SetPos(12, 15);
+    cout &lt;&lt; &quot;☆★　　　★☆☆☆★　　★☆☆☆★　　　　★☆  &quot;;
+    SetPos(12, 16);
+    cout &lt;&lt; &quot;☆★　　　　★☆★　　　　　★　　　　　　★☆  &quot;;
+    SetPos(12, 17);
+    cout &lt;&lt; &quot;☆★　　　　　★　　　　　　　         　★☆  &quot;;
+    SetPos(12, 18);
+    cout &lt;&lt; &quot;☆★　　Ich/liebe/dich制作　　　　　　　★☆&quot;;
+    SetPos(12, 19);
+    cout &lt;&lt; &quot;☆☆★★★★★★★★★★★★★★★★★★★☆☆★★★&quot;;
+    Sleep(1000);
+    system(&quot;cls&quot;);
+    system(&quot;color 0F&quot;);
+}</code></pre><p>3.main.cpp</p>
+<pre><code>#include &quot;student.h&quot;
+void main()
+{
+    system(&quot;title 学生成绩管理系统&quot;);
+    cout &lt;&lt; right;
+    help();
+    while (1)
+    {
+        load();
+
+        menu();
+        int k = menu_choose();
+        switch (k)
+        {
+        case 1:
+        {
+            input();
+            break;
+        }
+        {
+        case 2:
+            show();
+            break;
+        }
+        case 3:
+        {
+            modify();
+            break;
+        }
+        case 4:
+        {
+            print();
+            break;
+        }
+        case 5:
+        {
+            search();
+            break;
+        }
+        case 6:
+        {
+            theme();
+            break;
+        }
+        case 7:
+            help();
+        }
+    }
+}</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -1830,7 +2640,7 @@ e-7//非法，缺少尾数
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        99
+                        98
                     </p>
                 </div>
             </div>
@@ -2293,25 +3103,6 @@ e-7//非法，缺少尾数
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2386,6 +3177,25 @@ e-7//非法，缺少尾数
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -2397,17 +3207,6 @@ e-7//非法，缺少尾数
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
@@ -2735,25 +3534,6 @@ e-7//非法，缺少尾数
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2828,6 +3608,25 @@ e-7//非法，缺少尾数
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -2839,17 +3638,6 @@ e-7//非法，缺少尾数
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">

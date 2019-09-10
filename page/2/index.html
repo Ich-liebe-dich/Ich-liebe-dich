@@ -150,158 +150,6 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-07-18T09:06:14.000Z">2019-07-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 458 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/07/18/Servlet初始化参数（Servlet2.5,3.0）/">Servlet初始化参数（Servlet2.5,3.0）</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
-<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/96435804" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/96435804
-</a></p>
-<h4 id="一、使用Servlet2-5初始化参数"><a href="#一、使用Servlet2-5初始化参数" class="headerlink" title="一、使用Servlet2.5初始化参数"></a>一、使用Servlet2.5初始化参数</h4><p>Servlet2.5是基于 <strong>xml</strong> 配置的，所以在xml中配置。<br>Servlet3.0开始支持 <strong>注解</strong> 配置。</p>
-<p>配置分两种情况：在当前 <strong>Servlet有效</strong> 和在 <strong>整个web容器</strong> 中有效。</p>
-<p>对于整个web容器有效的情况下，无论是2.5还是3.0（及以上）都必须在xml中配置。</p>
-<p>配置整个web容器有效时使用 <code>&lt;context-param&gt;&lt;/context-param&gt;</code><br>配置当前Servlet有效时在对应的 <code>&lt;servlet&gt;&lt;/servlet&gt;</code> 使用 <code>&lt;init-param&gt;&lt;/init-param&gt;</code></p>
-<p>配置文件如下：</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;
-
-  &lt;context-param&gt;
-          &lt;param-name&gt;globalParamName&lt;/param-name&gt;
-        &lt;param-value&gt;globalParamValue&lt;/param-value&gt;
-  &lt;/context-param&gt;
-
-
-  &lt;servlet&gt;
-    &lt;description&gt;&lt;/description&gt;
-    &lt;display-name&gt;TestServlet&lt;/display-name&gt;
-    &lt;servlet-name&gt;TestServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;TestServlet&lt;/servlet-class&gt;
-     &lt;init-param&gt;
-        &lt;param-name&gt;servletParamName&lt;/param-name&gt;
-        &lt;param-value&gt;servletParamValue&lt;/param-value&gt;
-    &lt;/init-param&gt;
-    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-  &lt;/servlet&gt;
-
-  &lt;servlet-mapping&gt;
-    &lt;servlet-name&gt;TestServlet&lt;/servlet-name&gt;
-    &lt;url-pattern&gt;/TestServlet&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;
-&lt;/web-app&gt;</code></pre><p>读取：</p>
-<pre><code>public class TestServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    public TestServlet() {
-
-    }
-
-    @Override
-        public void init() throws ServletException {
-            super.init();
-            String value = super.getInitParameter(&quot;servletParamName&quot;);
-            System.out.println(&quot;当前Servlet的servletParam值为&quot;+value);
-
-            ServletContext sc = super.getServletContext();
-            String gValue = sc.getInitParameter(&quot;globalParamName&quot;);
-            System.out.println(&quot;当前Web容器的gobalValue为&quot;+gValue);
-
-        }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.getWriter().append(&quot;Served at: &quot;).append(request.getContextPath());
-    }
-
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        doGet(request, response);
-    }
-
-}</code></pre><h4 id="二、使用Servlet3-0初始化参数"><a href="#二、使用Servlet3-0初始化参数" class="headerlink" title="二、使用Servlet3.0初始化参数"></a>二、使用Servlet3.0初始化参数</h4><pre><code>initParams= {@WebInitParam(name=&quot;servletnameParam30&quot;,value=&quot;servletValue30&quot;)}</code></pre><p>name和value分别对应</p>
-<pre><code>&lt;param-name&gt;
-&lt;param-value&gt;
-
-
-
-@WebServlet(value=&quot;/TestServlet&quot;,loadOnStartup=1,initParams= {@WebInitParam(name=&quot;servletnameParam30&quot;,value=&quot;servletValue30&quot;)})
-public class TestServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Default constructor. 
-     */
-    public TestServlet() {
-        // TODO Auto-generated constructor stub
-    }
-
-    @Override
-    public void init() throws ServletException {
-
-        super.init();
-        String value = super.getInitParameter(&quot;servletnameParam30&quot;);
-        System.out.println(&quot;当前Servlet的servletParam30值为&quot;+value);
-
-        ServletContext sc = super.getServletContext();
-        String gValue = sc.getInitParameter(&quot;globalParamName&quot;);
-        System.out.println(&quot;当前Web容器的gobalValue为&quot;+gValue);
-    }
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        response.getWriter().append(&quot;Served at: &quot;).append(request.getContextPath());
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
-    }
-
-}</code></pre>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-07-18T02:12:40.000Z">2019-07-18</time>
                 
                 <div class="level-item">
@@ -1930,6 +1778,143 @@ public class Safe03 extends Thread{
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-23T06:38:04.000Z">2019-05-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/b-JavaScript/">b'JavaScript'</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 364 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/23/JavaScript 继承（原型链，对象冒充）/">JavaScript 继承（原型链，对象冒充）</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/90479830" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/90479830
+</a></p>
+<h2 id="一、对象冒充"><a href="#一、对象冒充" class="headerlink" title="一、对象冒充"></a>一、对象冒充</h2><pre><code>&lt;!DOCTYPE html&gt;
+
+&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;&lt;/title&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.show = function () {
+                document.getElementById(&quot;target1&quot;).innerHTML = &quot;name:&quot; + this.name + &quot;&lt;br&gt;age:&quot; + this.age+&quot;&lt;br&gt;&quot;;
+            }
+        }
+
+        var p = new Person(&quot;小学森&quot;, 12);
+        p.show();
+        function Student(name, age, score) {
+
+           // this.newMethod = Person;
+            //this.newMethod(name, age);
+            //delete newMethod;
+
+            this.score = score;
+            this.show = function () {
+                document.getElementById(&quot;target2&quot;).innerHTML = &quot;name:&quot; + this.name + &quot;&lt;br&gt;age:&quot; + this.age + &quot;&lt;br&gt;score:&quot; + this.score + &quot;&lt;br&gt;&quot;;
+            }
+        }
+
+        var stu = new Student(&quot;小学森&quot;, 12, 100);
+        stu.show();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h2 id="二、call-与-apply"><a href="#二、call-与-apply" class="headerlink" title="二、call() 与 apply()"></a>二、call() 与 apply()</h2><p><strong>1.call()</strong><br>将以上代码注释部分替换为：</p>
+<pre><code>Person.call(this, name, age);</code></pre><p>call()方法的第一个参数用作this的对象，其他参数与函数对应<br><strong>2.apply()</strong><br>将以上代码注释部分替换为</p>
+<pre><code>Person.apply(this, new Array(name, age));</code></pre><p>第一个参数为this，第二个参数为要传递给函数的参数数组。</p>
+<h2 id="三、原型链"><a href="#三、原型链" class="headerlink" title="三、原型链"></a>三、原型链</h2><pre><code>function ClassA() {
+
+        }
+
+        ClassA.prototype.color = &quot;red&quot;;
+        ClassA.prototype.sayColor = function () {
+            alert(this.color);
+        }
+
+        function ClassB() {
+
+        }
+
+        ClassB.prototype = new ClassA();
+
+        ClassB.prototype.name = &quot;&quot;;
+        ClassB.prototype.sayName = function () {
+            alert(this.name);
+        }
+
+
+        var objA = new ClassA();
+        var objB = new ClassB();
+        objA.color = &quot;yellow&quot;;
+        objB.color = &quot;blue&quot;;
+        objB.name = &quot;xx&quot;;
+        objA.sayColor();
+        objB.sayColor();
+        objB.sayName();</code></pre><h2 id="四、混合方式"><a href="#四、混合方式" class="headerlink" title="四、混合方式"></a>四、混合方式</h2><pre><code>function ClassA(sColor) {
+            this.color = sColor;
+        }
+
+        ClassA.prototype.sayColor = function () {
+            alert(this.color);
+        }
+
+        function ClassB(sColor, sName) {
+            ClassA.call(this, sColor);
+            this.name = sName;
+        }
+
+        ClassB.prototype = new ClassA();
+
+        ClassB.prototype.sayName = function () {
+            alert(this.name);
+        }
+
+        var objA = new ClassA(&quot;red&quot;);
+        var objB = new ClassB(&quot;yellow&quot;, &quot;admin&quot;);
+        objA.sayColor();
+        objB.sayColor();
+        objB.sayName();</code></pre>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -1999,7 +1984,7 @@ public class Safe03 extends Thread{
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        99
+                        98
                     </p>
                 </div>
             </div>
@@ -2462,25 +2447,6 @@ public class Safe03 extends Thread{
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2555,6 +2521,25 @@ public class Safe03 extends Thread{
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -2566,17 +2551,6 @@ public class Safe03 extends Thread{
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
@@ -2904,25 +2878,6 @@ public class Safe03 extends Thread{
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2997,6 +2952,25 @@ public class Safe03 extends Thread{
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -3008,17 +2982,6 @@ public class Safe03 extends Thread{
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">

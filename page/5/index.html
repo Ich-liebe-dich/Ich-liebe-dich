@@ -150,70 +150,6 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-31T15:52:09.000Z">2019-03-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/b-Leetcode/">b'Leetcode'</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 112 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/31/Leetcode 217存在重复元素（Java）/">Leetcode 217存在重复元素（Java）</a>
-            
-        </h1>
-        <div class="content">
-            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
-<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/88938320" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/88938320
-</a></p>
-<p>[ Leetcode 217 ](<a href="https://leetcode-cn.com/problems/contains-" target="_blank" rel="noopener">https://leetcode-cn.com/problems/contains-</a><br>duplicate/submissions/)</p>
-<pre><code>class Solution {
-    public boolean containsDuplicate(int[] nums) {
-        Arrays.sort(nums);
-        int count = 1;
-        for(int i = 0;i&lt;nums.length-1;i++){
-            if(nums[i]==nums[i+1]){
-                count++;
-                if(count&gt;=2)
-                    return true;
-            }
-            else
-                count = 1;
-        }
-            return false;
-    }
-}</code></pre><p>提交速度还行。。。</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-03-31T15:43:16.000Z">2019-03-31</time>
                 
                 <div class="level-item">
@@ -1552,6 +1488,110 @@ void input()
 
 
 
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-23T16:08:20.000Z">2019-03-24</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/b-java-xe5-x8c-x85/">b'java\xe5\x8c\x85'</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 543 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/03/24/Java包/">Java包</a>
+            
+        </h1>
+        <div class="content">
+            <p><a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> </a> 版权声明：本文为博主原创文章，遵循 <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener"> CC 4.0<br>BY-SA </a> 版权协议，转载请附上原文出处链接和本声明。</p>
+<p>本文链接： <a href="https://blog.csdn.net/weixin_43894577/article/details/88771421" target="_blank" rel="noopener"> https://blog.csdn.net/weixin_43894577/article/details/88771421
+</a></p>
+<h1 id="一、包"><a href="#一、包" class="headerlink" title="一、包"></a>一、包</h1><ul>
+<li>类包是Java管理文件的一种机制。 </li>
+<li>目的：防止类同名问题（将两个类放置在不同包中） </li>
+<li>命名规则：小写字母 </li>
+</ul>
+<pre><code>cn.sxt.test;
+cn.sxt.view;
+cn.sxt.view.model;</code></pre><p><strong>注意事项</strong> :</p>
+<ol>
+<li>写项目时都要加包，不要使用默认包。 </li>
+<li>com.sxt.view 和 com.sxt.view.model 是两个完全独立的包。 </li>
+</ol>
+<h1 id="二、package"><a href="#二、package" class="headerlink" title="二、package"></a>二、package</h1><p>package用于指定包名<br>格式： <code>package 包名</code></p>
+<h1 id="三、import"><a href="#三、import" class="headerlink" title="三、import"></a>三、import</h1><h2 id="导入包"><a href="#导入包" class="headerlink" title="导入包"></a>导入包</h2><p>import用于导入包，告诉编译器应该使用哪个包里面的类。<br>例如：一个程序同时用到java.sql.Date类和java.util.Date里面的类，你需这样做：</p>
+<pre><code>java.util.Date date1 = new java.util.Date();
+java.sql.Date date2 = new java.sql.date(2333);</code></pre><p>即使程序里面没有出现像如上的情况，也需要导入包：</p>
+<pre><code>import java.util.date;
+//import java.util.*;(java.util包里面的所有类都可以使用)
+Date date = new Date();</code></pre><h2 id="导入静态成员"><a href="#导入静态成员" class="headerlink" title="导入静态成员"></a>导入静态成员</h2><pre><code>import static java.lang.Math.max;
+import static java.lang.System.out;
+public class Test{
+    public static void main(String args[])[
+        out.println(&quot;1和2中的最大值为&quot;+max(1,2));
+        }
+    }</code></pre><p><strong>注意：</strong> Java会默认导入java.lang包下所有的类，因此这些类我们可以直接使用。</p>
+<h1 id="四、常用包"><a href="#四、常用包" class="headerlink" title="四、常用包"></a>四、常用包</h1><table>
+<thead>
+<tr>
+<th>包名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.lang</td>
+<td>包含一些Java语言的核心类，如String、Math、Integer、System和Thread，提供常用功能。</td>
+</tr>
+<tr>
+<td>java.awt</td>
+<td>包含了构成抽象窗口工具集（abstract window</td>
+</tr>
+<tr>
+<td>toolkits）的多个类，这些类被用来构建和管理应用程序的图形用户界面(GUI)。</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://java.net" target="_blank" rel="noopener"> java.net </a></td>
+<td>包含执行与网络相关的操作的类。</td>
+</tr>
+<tr>
+<td><a href="http://java.io" target="_blank" rel="noopener"> java.io </a></td>
+<td>包含能提供多种输入/输出功能的类。</td>
+</tr>
+<tr>
+<td>java.util</td>
+<td>包含一些实用工具类，如定义系统特性、使用与日期日历相关的函数。</td>
+</tr>
+</tbody></table>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
     
 <div class="card card-transparent">
@@ -1625,7 +1665,7 @@ void input()
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        99
+                        98
                     </p>
                 </div>
             </div>
@@ -2088,25 +2128,6 @@ void input()
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2181,6 +2202,25 @@ void input()
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -2192,17 +2232,6 @@ void input()
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
@@ -2530,25 +2559,6 @@ void input()
         
         <article class="media">
             
-            <a href="/2019/09/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-08T11:08:50.297Z">2019-09-08</time></div>
-                    <a href="/2019/09/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/08/06/SSM 表单字段int为空，400/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="SSM 表单字段int为空，400">
@@ -2623,6 +2633,25 @@ void input()
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Spring 各种集合的注入（Set,Map,String[],List,Properties）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-24T13:42:12.000Z">2019-07-24</time></div>
+                    <a href="/2019/07/24/Spring 各种集合的注入（Set,Map,String[],List,Properties）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Spring 各种集合的注入（Set,Map,String[],List,Properties）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/b-Java-EE/">b'Java EE'</a> / <a class="has-link-grey -link" href="/categories/b-Java-EE/b-Spring/">b'Spring'</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -2634,17 +2663,6 @@ void input()
             Archives
         </h3>
         <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/08/">
